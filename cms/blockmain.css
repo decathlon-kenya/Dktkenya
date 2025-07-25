@@ -9,8 +9,8 @@
   margin-block-start: clamp(1.25rem, 1.0526rem + .8421vw, 2rem);
   margin-left: auto;
   margin-right: auto;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
+  padding-left: 0px;
+  padding-right: 0px;
   width: 100%;
 }
 
