@@ -172,7 +172,7 @@
     
     @media (max-width: 480px) { /* Mobile devices */
         .product--card {
-            height: 200px !important;
+            height: 250px !important;
         }
     }
 
