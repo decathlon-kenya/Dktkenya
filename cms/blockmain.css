@@ -1,0 +1,109 @@
+.four_categories_wrapper {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  background-color: rgb(245, 244, 245);
+  margin-bottom: 2rem;
+}
+
+.four_categories_container {
+  margin-block-start: clamp(1.25rem, 1.0526rem + .8421vw, 2rem);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  width: 100%;
+}
+
+.four_categories_title_wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.four_categories_title_container {
+  margin: 0 20px;
+  padding-right: 1rem;
+  width: 100%;
+}
+
+.four_categories_title_container > h2 {
+  font-style: normal !important;
+}
+
+.four_categories_title{
+  font-size: clamp(1.375rem, 1.2105rem + 0.7018vw, 2rem);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  padding-inline-end: 5rem;
+}
+
+.four_categories_box {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.four_categories_category_wrapper {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  width: 50%;
+  margin-bottom: 0.875rem;
+}
+
+.four_categories_image_wrapper {
+  background-color: transparent;
+  border-style: none;
+  border-radius: .75rem;
+  overflow: hidden;
+  flex-direction: column;
+  min-width: 0;
+  display: flex;
+  position: relative;
+}
+.four_categories_image_wrapper > img{
+  height: auto;
+  max-width: 100%;
+}
+/* Media queries in ascending order of min-width */
+@media (min-width: 425px) {
+  .four_categories_container {
+    max-width: 425px;
+  }
+}
+
+@media (min-width: 640px) {
+  .four_categories_container {
+    max-width: 640px;
+  }
+}
+
+@media (min-width: 768px) {
+  .four_categories_container {
+    max-width: 768px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .four_categories_title_container {
+    margin: 0 40px;
+  }
+}
+
+@media (min-width: 900px) {
+  .four_categories_title_container {
+    margin: 0 60px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .four_categories_container {
+    max-width: 1024px;
+  }
+  .four_categories_category_wrapper {
+    width: 25%;
+  }
+}
+
+@media (min-width: 1280px) {
+  .four_categories_container {
+    max-width: 1280px;
+  }
+}
