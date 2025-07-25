@@ -65,14 +65,15 @@
     }
   }
 
-  .showroom-container {
-    box-sizing: border-box;
-    margin: 0px;
-    min-width: 0px;
-    display: flex;
-    flex-direction: column;
-    height: unset;
-  }
+.showroom-container {
+  box-sizing: border-box;
+  margin: 0px;
+  min-width: 0px;
+  display: flex;
+  flex-direction: column;
+  height: unset;
+  font-family: 'Inter', sans-serif;
+}
 
   .showroom-banner-wrapper {
     box-sizing: border-box;
