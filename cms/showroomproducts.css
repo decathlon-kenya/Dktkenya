@@ -27,7 +27,7 @@
   width: 13px;
   height: 13px;
   border-radius: 50%;
-  background: #ffea28; /* Consider using a CSS variable here */
+  background: #ffea28;
   animation-timing-function: cubic-bezier(0, 1, 1, 0);
 }
 
@@ -268,8 +268,8 @@
   min-width: 0px;
   width: 100%;
   cursor: pointer;
-  padding: 7px 4px 0px 8px;
-  font-family: "Roboto Condensed", sans-serif;
+  padding: 7px 4px 0px 8px; /* Original padding */
+  font-family: "Inter", sans-serif; /* Changed font */
 }
 
 .product-details-wrapper > * {
@@ -304,13 +304,13 @@
 }
 
 .product-details-wrapper .product-price {
-  color: #101010; /* Fixed syntax */
-  font-family: "Roboto Condensed", sans-serif;
+  color: #101010;
+  font-family: "Inter", sans-serif; /* Changed font */
   letter-spacing: -0.01em;
   position: relative;
   text-decoration: none;
   text-transform: none;
-  font-weight: 500; /* Fixed invalid '200px' */
+  font-weight: 500;
   padding: 3px 3px !important;
   border-radius: 1px !important;
   display: inline-block !important;
@@ -333,7 +333,7 @@
   box-sizing: border-box;
   margin: 0px;
   min-width: 0px;
-  font-family: Roboto, sans-serif;
+  font-family: "Inter", sans-serif; /* Changed font */
   font-weight: 700;
   font-size: 12px;
   line-height: 12px;
@@ -346,10 +346,10 @@
   overflow: hidden;
   text-overflow: ellipsis;
   box-sizing: border-box;
-  margin: 3px 0px 0px;
+  margin: 3px 0px 0px; /* Original margin */
   min-width: 0px;
   letter-spacing: 0.01em;
-  font-family: Roboto, sans-serif;
+  font-family: "Inter", sans-serif; /* Changed font */
   text-transform: capitalize;
   -webkit-line-clamp: 2 !important;
   font-size: 14px !important;
@@ -360,22 +360,9 @@
 }
 
 /*
- * CALL TO ACTION BUTTON
+ * CTA BUTTON
  */
 .vp-button {
-  appearance: none;
-  align-items: center;
-  align-self: center;
-  flex-direction: row;
-  justify-content: center;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  transition: all 0.35s ease;
-  gap: 8px;
-  text-decoration: none;
-  letter-spacing: -0.01em;
-  font-weight: 500;
   background: transparent !important;
   color: #101010 !important;
   font-size: 16px !important;
@@ -385,10 +372,14 @@
   border-radius: 3px !important;
   display: block !important;
   text-align: center !important;
-  cursor: pointer;
-  width: 100%;
-  box-sizing: border-box;
-  line-height: 1.7;
+  cursor: pointer !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  position: absolute; /* Kept positioning as original */
+  bottom: 0; /* Kept positioning as original */
+  left: 0; /* Kept positioning as original */
+  transition: all 0.35s ease; /* Kept transition as original */
+  /* Removed properties that are now overridden or redundant with !important */
 }
 
 .vp-button:hover {
@@ -468,7 +459,7 @@ svg {
 }
 
 /*
- * SHOWROOM CAMPAIGN STICKER (NEW)
+ * SHOWROOM CAMPAIGN STICKER
  */
 .showroom-campaign-sticker {
   position: absolute;
@@ -490,8 +481,6 @@ svg {
 
 /*
  * MEDIA QUERIES
- * Defined in descending order of min-width for mobile-first approach,
- * or ascending order of max-width. Here we use max-width to target smaller screens.
  */
 
 /* Desktop and large laptops: 5 products per row, with scrolling */
@@ -516,7 +505,7 @@ svg {
   }
 }
 
-/* Tablets (portrait) and smaller: 3 products per row, with scrolling */
+/* Tablets (portrait) and smaller (mobile/tablet breakpoint): 3 products per row, but limited to 4 visible */
 @media screen and (max-width: 768px) {
   #showroom-title {
     padding-left: 20px;
@@ -573,26 +562,26 @@ svg {
   }
   .showroom-products-container {
     gap: 12px;
-    overflow-x: hidden; /* Hide horizontal scrollbar on mobile */
+    overflow-x: hidden; /* **CRUCIAL: Hides horizontal scrollbar on mobile** */
   }
   .showroom_arrow {
     display: none;
   }
 
-  /* To display max 4 products (2 rows of 2), hide the rest */
+  /* **CRUCIAL: Hide products beyond the 4th on mobile** */
   .showroom-products-container .product--card:nth-child(n+5) { /* Targets 5th product and beyond */
-    display: none; /* Hide any product beyond the 4th */
+    display: none;
   }
 }
 
-/* Mobile devices: 2 products per row, rest hidden */
+/* Mobile devices: 2 products per row, rest hidden (as per 768px rule) */
 @media screen and (max-width: 480px) {
   .product--card {
     height: 320px !important;
     width: calc(50% - 10px); /* 2 items per row */
   }
-  /* The rule above for (max-width: 768px) already hides products beyond the 4th.
-     No need to repeat it here, as it's inclusive. */
+  /* The rule at 768px for hiding nth-child(n+5) is still active here,
+     ensuring only 4 products (2 rows of 2) are shown. */
 }
 
 
@@ -611,8 +600,7 @@ svg {
     display: block;
   }
   .product--card {
-    /* Base product card height/width for desktop from 768px up,
-       will be overridden by more specific max-width rules above for responsiveness */
+    /* Base desktop settings (overridden by max-width rules for column count) */
     height: 475px;
     width: 237px;
   }
@@ -636,11 +624,11 @@ svg {
     display: none;
   }
   .showroom-products-container {
-    overflow-x: scroll; /* Enable horizontal scroll on desktop again */
+    overflow-x: scroll; /* **CRUCIAL: Re-enable horizontal scroll on desktop** */
   }
-  /* Ensure products are displayed on desktop after being hidden on mobile */
+  /* **CRUCIAL: Ensure products are displayed on desktop after being hidden on mobile** */
   .showroom-products-container .product--card:nth-child(n+5) {
-    display: flex; /* Or whatever its original display type was */
+    display: flex; /* Or 'grid' or 'block' depending on underlying element structure */
   }
 }
 
