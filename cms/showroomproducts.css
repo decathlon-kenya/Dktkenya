@@ -5,7 +5,6 @@
   width: 100%;
   position: relative;
 }
-
 .loading-products span {
   display: block;
   position: absolute;
@@ -13,69 +12,48 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
-
 .lds-ellipsis {
   display: inline-block;
   position: relative;
   width: 80px;
   height: 80px;
 }
-
 .lds-ellipsis div {
   position: absolute;
   top: 33px;
   width: 13px;
   height: 13px;
   border-radius: 50%;
-  background: #ffea28;
+  background: #ffea28; /* Consider using a CSS variable here */
   animation-timing-function: cubic-bezier(0, 1, 1, 0);
 }
-
 .lds-ellipsis div:nth-child(1) {
   left: 8px;
   animation: lds-ellipsis1 0.6s infinite;
 }
-
 .lds-ellipsis div:nth-child(2) {
   left: 8px;
   animation: lds-ellipsis2 0.6s infinite;
 }
-
 .lds-ellipsis div:nth-child(3) {
   left: 32px;
   animation: lds-ellipsis2 0.6s infinite;
 }
-
 .lds-ellipsis div:nth-child(4) {
   left: 56px;
   animation: lds-ellipsis3 0.6s infinite;
 }
-
 @keyframes lds-ellipsis1 {
-  0% {
-    transform: scale(0);
-  }
-  100% {
-    transform: scale(1);
-  }
+  0% { transform: scale(0); }
+  100% { transform: scale(1); }
 }
-
 @keyframes lds-ellipsis3 {
-  0% {
-    transform: scale(1);
-  }
-  100% {
-    transform: scale(0);
-  }
+  0% { transform: scale(1); }
+  100% { transform: scale(0); }
 }
-
 @keyframes lds-ellipsis2 {
-  0% {
-    transform: translate(0, 0);
-  }
-  100% {
-    transform: translate(24px, 0);
-  }
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(24px, 0); }
 }
 
 /*
@@ -86,8 +64,8 @@
   margin: 0px;
   min-width: 0px;
   display: flex;
-  flex-direction: column;
-  height: unset;
+  flex-direction: column; /* Default for mobile */
+  height: unset; /* Default for mobile */
 }
 
 /*
@@ -97,8 +75,8 @@
   box-sizing: border-box;
   margin: 0px 24px 0px 0px;
   min-width: 0px;
-  width: 268px;
-  height: 477px;
+  width: 268px; /* Desktop default */
+  height: 477px; /* Desktop default */
   flex-shrink: 0;
   cursor: pointer;
 }
@@ -111,7 +89,7 @@
 .showroom-mobile-banner {
   box-sizing: border-box;
   display: block;
-  overflow: hidden;
+  overflow: hidden; /* For border-radius on images */
   width: initial;
   height: initial;
   background: none;
@@ -120,7 +98,7 @@
   margin: 0px;
   padding: 0px;
   position: relative;
-  max-width: 100%;
+  max-width: 100%; /* For responsive images */
 }
 
 /* Specific image styles */
@@ -153,7 +131,7 @@
   max-height: 100%;
 }
 
-.showroom-mobile-banner img {
+.showroom-mobile-banner img{
   position: absolute;
   inset: 0px;
   box-sizing: border-box;
@@ -178,26 +156,25 @@
   margin: 0px;
   min-width: 0px;
   display: grid;
-  position: relative;
-  padding-left: 27px;
-  padding-right: 40px;
-  height: 477px;
+  position: relative; /* Crucial for sticker positioning */
+  padding-left: 27px; /* Consider unifying with other padding */
+  padding-right: 40px; /* Consider unifying with other padding */
+  height: 477px; /* Desktop default */
 }
 
 .showroom-products-container {
   box-sizing: border-box;
   margin: 0px;
   min-width: 0px;
-  display: grid;
-  gap: 24px;
-  overflow-x: scroll; /* Default for desktop (5 products visible, rest scroll) */
-  white-space: nowrap;
-  scrollbar-width: none;
-  padding-left: 2px;
+  display: grid; /* Used for gap */
+  gap: 24px; /* Desktop gap */
+  overflow-x: scroll;
+  white-space: nowrap; /* Keeps items in one line for scrolling */
+  scrollbar-width: none; /* Hides scrollbar in Firefox */
+  padding-left: 2px; /* Small inner padding */
   height: auto;
   scroll-behavior: smooth;
 }
-
 /* Hide scrollbar in Webkit browsers */
 .showroom-products-container::-webkit-scrollbar {
   display: none;
@@ -207,7 +184,7 @@
  * PRODUCT CARD
  */
 .product--card {
-  box-sizing: border-box;
+  box-sizing: border-box; /* Essential for calc() with padding/margin */
   margin: 5px; /* Margin around each card for spacing */
   min-width: 0px;
   border-radius: 0px 0px 4px 4px;
@@ -215,7 +192,7 @@
   cursor: pointer;
   display: flex;
   flex-direction: column;
-  flex-shrink: 0;
+  flex-shrink: 0; /* Prevents cards from shrinking in flex/grid */
   height: 435px !important; /* Default (desktop large) height */
   width: calc(20% - 10px); /* Default (desktop large): 5 items per row (100% / 5 = 20%) minus total horizontal margin (5px left + 5px right = 10px) */
 }
@@ -232,6 +209,7 @@
   min-width: 0;
   display: flex;
   position: relative;
+  /* Redundant styles like box-sizing, display, width, height, etc. are already moved to the common block above */
 }
 
 .product-picture-wrapper:hover .product-picture {
@@ -254,9 +232,8 @@
   max-height: 100%;
   mix-blend-mode: multiply;
 }
-
 .product-picture {
-  transition: all .5s cubic-bezier(.215, .61, .355, 1);
+  transition: all .5s cubic-bezier(.215,.61,.355,1);
 }
 
 /*
@@ -268,21 +245,19 @@
   min-width: 0px;
   width: 100%;
   cursor: pointer;
-  padding: 7px 4px 0px 8px; /* Original padding */
-  font-family: "Inter", sans-serif; /* Changed font */
+  padding: 7px 4px 0px 8px;
+  font-family: "Roboto Condensed", sans-serif;
 }
-
 .product-details-wrapper > * {
   text-align: left;
 }
-
 .product-details-wrapper .product-price-wrapper {
   box-sizing: border-box;
   margin: 0px -4px 0px 0px;
   min-width: 0px;
   display: flex;
   padding: 1px 0px;
-  min-height: 23px;
+  min-height: 23px; /* Mobile default */
 }
 
 .product-details-wrapper .product-price-container {
@@ -304,19 +279,21 @@
 }
 
 .product-details-wrapper .product-price {
-  color: #101010;
-  font-family: "Inter", sans-serif; /* Changed font */
+  /* Fix: Use hex color directly or a proper variable name */
+  color: #101010; /* Changed from var(#101010) */
+  font-family: "Roboto Condensed", sans-serif;
   letter-spacing: -0.01em;
   position: relative;
   text-decoration: none;
   text-transform: none;
-  font-weight: 500;
+  /* New/Updated Properties from your snippet */
+  font-weight: 500; /* Fixed invalid '200px' to a valid number */
   padding: 3px 3px !important;
   border-radius: 1px !important;
-  display: inline-block !important;
-  font-size: 14px !important;
+  display: inline-block !important; /* Overrides inline-flex */
+  font-size: 14px !important; /* Overrides 16px */
   text-align: right !important;
-  line-height: 1.5;
+  line-height: 1.5; /* Keeping original line-height unless specified */
 }
 
 .product-brand-wrapper {
@@ -325,67 +302,79 @@
   min-width: 0px;
   overflow: hidden;
   text-overflow: ellipsis;
-  color: #808080;
-  padding-top: 3px !important;
+  color: #808080; /* New property */
+  padding-top: 3px !important; /* New property */
 }
 
 .product-brand {
   box-sizing: border-box;
   margin: 0px;
   min-width: 0px;
-  font-family: "Inter", sans-serif; /* Changed font */
+  font-family: Roboto, sans-serif;
   font-weight: 700;
-  font-size: 12px;
-  line-height: 12px;
+  font-size: 12px; /* Mobile default */
+  line-height: 12px; /* Mobile default */
 }
 
 .product-details-wrapper .product-name {
+  /* Original properties */
   display: -webkit-box;
   -webkit-box-orient: vertical;
   white-space: pre-wrap;
   overflow: hidden;
   text-overflow: ellipsis;
   box-sizing: border-box;
-  margin: 3px 0px 0px; /* Original margin */
+  margin: 3px 0px 0px;
   min-width: 0px;
   letter-spacing: 0.01em;
-  font-family: "Inter", sans-serif; /* Changed font */
+  font-family: Roboto, sans-serif;
+  /* New/Updated Properties from your snippet */
   text-transform: capitalize;
-  -webkit-line-clamp: 2 !important;
-  font-size: 14px !important;
+  -webkit-line-clamp: 2 !important; /* Overrides 3 */
+  font-size: 14px !important; /* Overrides 12px */
   color: #101010 !important;
   width: 100% !important;
-  line-height: 1.4 !important;
-  max-height: 2.8em !important;
+  line-height: 1.4 !important; /* Overrides 14px (unitless is better) */
+  max-height: 2.8em !important; /* Calculates 2 lines * 1.4em line-height */
 }
 
 /*
- * CTA BUTTON
+ * CALL TO ACTION BUTTON
  */
 .vp-button {
-  background: transparent !important;
-  color: #101010 !important;
-  font-size: 16px !important;
-  text-transform: uppercase !important;
-  border: 1px solid #101010 !important;
-  padding: 10px 20px !important;
-  border-radius: 3px !important;
-  display: block !important;
+  appearance: none;
+  align-items: center;
+  align-self: center;
+  flex-direction: row;
+  justify-content: center;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  transition: all 0.35s ease;
+  gap: 8px;
+  text-decoration: none;
+  letter-spacing: -0.01em;
+  font-weight: 500;
+  /* New/Updated Properties from your snippet */
+  background: transparent !important; /* Overrides #3643ba */
+  color: #101010 !important; /* Overrides #fff */
+  font-size: 16px !important; /* Overrides 14px */
+  text-transform: uppercase !important; /* Existing, but re-asserted with !important */
+  border: 1px solid #101010 !important; /* Overrides transparent border */
+  padding: 10px 20px !important; /* Overrides 12px 24px */
+  border-radius: 3px !important; /* Overrides 0 */
+  display: block !important; /* Overrides inline-flex */
   text-align: center !important;
-  cursor: pointer !important;
-  width: 100% !important;
-  box-sizing: border-box !important;
-  position: absolute; /* Kept positioning as original */
-  bottom: 0; /* Kept positioning as original */
-  left: 0; /* Kept positioning as original */
-  transition: all 0.35s ease; /* Kept transition as original */
-  /* Removed properties that are now overridden or redundant with !important */
+  cursor: pointer; /* Already present, no need for !important */
+  width: 100%; /* Already present, no need for !important */
+  box-sizing: border-box; /* Already present, no need for !important */
+  line-height: 1.7; /* Keeping original */
 }
 
 .vp-button:hover {
-  background: #3643ba !important;
-  color: #fff !important;
-  border: none !important;
+  background: #3643ba !important; /* Overrides new transparent background */
+  color: #fff !important; /* Overrides new #101010 color */
+  border: none !important; /* Overrides new 1px solid #101010 border */
 }
 
 .vp-button:before {
@@ -416,7 +405,7 @@
 }
 
 /*
- * GLOBAL SVG HIDE (Be cautious with this rule as it hides ALL SVGs)
+ * GLOBAL SVG HIDE
  */
 svg {
   display: none !important;
@@ -434,23 +423,25 @@ svg {
 }
 
 #showroom-title {
+  /* Original properties */
   letter-spacing: 0;
   text-transform: uppercase;
   font-style: normal;
-  font-weight: 700 !important;
-  font-size: 20px !important;
-  line-height: 1.15 !important;
-  margin: 0 !important;
-  color: #424453 !important;
-  padding-left: 2.625rem;
-  margin-right: 30px;
+  /* New/Updated Properties from your snippet */
+  font-weight: 700 !important; /* Overrides 800 */
+  font-size: 20px !important; /* Overrides 40px */
+  line-height: 1.15 !important; /* Already present, re-asserted */
+  margin: 0 !important; /* Already present, re-asserted */
+  color: #424453 !important; /* New property */
+  padding-left: 2.625rem; /* Retained original for consistency on desktop */
+  margin-right: 30px; /* Retained original */
 }
 
 /*
  * COMPONENT CONTAINER
  */
 .component-container {
-  margin: 0px 0px 20px 37px;
+  margin: 0px 0px 20px 37px; /* Desktop default */
   direction: ltr;
 }
 
@@ -459,7 +450,7 @@ svg {
 }
 
 /*
- * SHOWROOM CAMPAIGN STICKER
+ * SHOWROOM CAMPAIGN STICKER (NEW)
  */
 .showroom-campaign-sticker {
   position: absolute;
@@ -480,33 +471,33 @@ svg {
 }
 
 /*
- * MEDIA QUERIES
+ * MEDIA QUERIES (Updated and Combined)
  */
 
-/* Desktop and large laptops: 5 products per row, with scrolling */
-@media screen and (min-width: 1201px) {
-  .product--card {
-    width: calc(20% - 10px); /* 5 items per row */
-  }
+/* Default mobile styles for product card (already set above, but for clarity):
+.product--card {
+  height: 320px !important;
+  width: calc(50% - 10px);
 }
+*/
 
-/* Medium desktops/laptops: 5 products per row, with scrolling */
 @media screen and (max-width: 1200px) {
   .product--card {
-    width: calc(20% - 10px); /* 5 items per row */
+    /* desktop (1200px down to 993px): 5 products per row (reasserted for clarity) */
+    width: calc(20% - 10px);
   }
 }
 
-/* Tablets (landscape) and smaller laptops: 4 products per row, with scrolling */
 @media screen and (max-width: 992px) {
+  /* Medium screens (992px down to 769px): 4 products per row */
   .product--card {
-    width: calc(25% - 10px); /* 4 items per row */
+    width: calc(25% - 10px);
     height: 380px !important;
   }
 }
 
-/* Tablets (portrait) and smaller (mobile/tablet breakpoint): 3 products per row, but limited to 4 visible */
 @media screen and (max-width: 768px) {
+  /* Tablets and smaller (768px down to 481px): 3 products per row */
   #showroom-title {
     padding-left: 20px;
   }
@@ -533,11 +524,11 @@ svg {
     height: 380px;
   }
   .showroom-products-track > :last-child {
-    margin-right: 25px;
+    margin-right: 25px
   }
   .product--card {
-    height: 350px !important;
-    width: calc(33.33% - 10px); /* 3 items per row */
+    height: 350px !important; /* Adjust height */
+    width: calc(33.33% - 10px);
   }
   .product-details-wrapper .product-price-wrapper {
     min-height: 23px;
@@ -562,33 +553,22 @@ svg {
   }
   .showroom-products-container {
     gap: 12px;
-    overflow-x: hidden; /* **CRUCIAL: Hides horizontal scrollbar on mobile** */
   }
   .showroom_arrow {
     display: none;
   }
-
-  /* **CRUCIAL: Hide products beyond the 4th on mobile** */
-  .showroom-products-container .product--card:nth-child(n+5) { /* Targets 5th product and beyond */
-    display: none;
-  }
 }
 
-/* Mobile devices: 2 products per row, rest hidden (as per 768px rule) */
 @media screen and (max-width: 480px) {
+  /* Mobile devices (480px and below): 2 products per row */
   .product--card {
     height: 320px !important;
-    width: calc(50% - 10px); /* 2 items per row */
+    width: calc(50% - 10px);
   }
-  /* The rule at 768px for hiding nth-child(n+5) is still active here,
-     ensuring only 4 products (2 rows of 2) are shown. */
 }
 
-
-/*
- * DESKTOP-SPECIFIC ADJUSTMENTS (min-width rules for larger screens)
- */
 @media screen and (min-width: 768px) {
+  /* Desktop styles (768px and up) */
   .showroom-container {
     flex-direction: row;
     height: 477px;
@@ -600,9 +580,9 @@ svg {
     display: block;
   }
   .product--card {
-    /* Base desktop settings (overridden by max-width rules for column count) */
-    height: 475px;
-    width: 237px;
+    /* Product card height on desktop for 768px+ before the more specific larger breakpoints */
+    height: 475px; /* Original height for 768px+ cards if not overridden by larger breakpoints */
+    width: 237px; /* Original width for 768px+ cards if not overridden by larger breakpoints */
   }
   .product-details-wrapper .product-price-wrapper {
     min-height: 30px;
@@ -624,11 +604,7 @@ svg {
     display: none;
   }
   .showroom-products-container {
-    overflow-x: scroll; /* **CRUCIAL: Re-enable horizontal scroll on desktop** */
-  }
-  /* **CRUCIAL: Ensure products are displayed on desktop after being hidden on mobile** */
-  .showroom-products-container .product--card:nth-child(n+5) {
-    display: flex; /* Or 'grid' or 'block' depending on underlying element structure */
+    overflow-x: clip; /* Removes horizontal scrollbar on desktop */
   }
 }
 
@@ -637,7 +613,7 @@ svg {
  */
 .swiper-button-prev,
 .swiper-button-next {
-  pointer-events: auto !important;
+  pointer-events: auto !important; /* Still using !important as per your code */
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -656,13 +632,13 @@ svg {
   font-weight: 800;
 }
 
-/* Corrected selectors for arrow positioning */
-.left_showroom_arrow.left_no_image_arrow {
+/* FIX: Corrected selectors for arrow positioning */
+.left_showroom_arrow.left_no_image_arrow { /* Combined classes on the same element */
   margin-left: 20px;
   left: 0;
 }
 
-.right_showroom_arrow.right_no_image_arrow {
+.right_showroom_arrow.right_no_image_arrow { /* Combined classes on the same element */
   margin-right: 15px;
   right: 0;
 }
