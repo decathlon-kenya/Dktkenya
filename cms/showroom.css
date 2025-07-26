@@ -294,7 +294,6 @@
     font-weight: 200;
     grid-area: primary;
     letter-spacing: -0.01em;
-    line-height: 1.5;
     position: relative;
     text-decoration: none;
     text-transform: none;
@@ -310,7 +309,6 @@
     overflow: hidden;
     text-overflow: ellipsis;
     color: #101010; 
-    padding-top: 3px;
   }
 
   .product-brand {
@@ -320,7 +318,7 @@
     font-weight: 600;
     font-size: 16px;
   font-family: 'Roboto Condensed', sans-serif !important;
-      color: #008000;
+      color: #101010;
   }
 
  .product-details-wrapper .product-name {
