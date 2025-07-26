@@ -158,6 +158,7 @@
     margin: 0px;
     min-width: 0px;
     height: 405px !important;
+    width: 150px;
     border-radius: 0px 0px 4px 4px;
     position: relative;
     cursor: pointer;
@@ -479,15 +480,16 @@ font-family: 'Roboto Condensed', sans-serif !important;
   #showroom-title {
     letter-spacing: 0;
     text-transform: uppercase;
-    font-weight: 700;
+    font-weight: 900;
     font-style: normal;
-    font-size: 20px;
+    font-size: 15px;
     line-height: 1.15;
     padding-left: 2.625rem;
     margin: 0;
     margin-right: 30px;
     color: #101010;
-      font-family: 'Roboto Condensed', sans-serif !important;
+    font-family: 'Roboto Condensed', sans-serif !important;
+    margin-top: 30px;  
   }
 
   .component-container{
