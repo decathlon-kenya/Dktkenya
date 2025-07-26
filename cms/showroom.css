@@ -73,7 +73,7 @@
   display: flex;
   flex-direction: column;
   height: unset;
-  font-family: 'Roboto Condensed', sans-serif;
+  font-family: 'Roboto Condensed', sans-serif !important;
 }
 
   .showroom-banner-wrapper {
@@ -251,7 +251,8 @@
     min-width: 0px;
     width: 100%;
     cursor: pointer;
-    padding: 7px 4px 0px 8px;
+    padding: 7px 4px 0px 4px;
+    font-family: 'Roboto Condensed', sans-serif !important;
   }
   .product-details-wrapper > * {
     text-align: left;
@@ -263,11 +264,13 @@
     display: flex;
     padding: 1px 0px;
     min-height: 23px;
+    font-family: 'Roboto Condensed', sans-serif !important;
   }
 
   .product-details-wrapper .product-price-container {
     display: flex;
     flex-direction: column;
+    font-family: 'Roboto Condensed', sans-serif !important;
   }
 
   .vp-price {
@@ -276,6 +279,7 @@
     grid-template-areas:
       "primary secondary tertiary"
       "sub sub sub";
+     font-family: 'Roboto Condensed', sans-serif !important;
   }
 
   .vp-price > * {
@@ -296,6 +300,7 @@
     text-transform: none;
     text-align: right !important; 
     padding: 3px 3px !important;
+      font-family: 'Roboto Condensed', sans-serif !important;
   }
 
   .product-brand-wrapper {
@@ -315,6 +320,7 @@
     font-weight: 600;
     font-size: 10px;
     line-height: 8px;
+  font-family: 'Roboto Condensed', sans-serif !important;
   }
 
  .product-details-wrapper .product-name {
@@ -333,6 +339,7 @@
   text-transform: capitalize;
   width: 100%;
   color: #101010;
+font-family: 'Roboto Condensed', sans-serif !important;
 }
   
 
@@ -366,6 +373,7 @@
     font-weight: 500;
     cursor: pointer;
     box-sizing: border-box;
+font-family: 'Roboto Condensed', sans-serif !important;
   }
 
   .vp-button:hover{
