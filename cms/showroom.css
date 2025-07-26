@@ -399,7 +399,23 @@
     vertical-align: middle;
     line-height: 1;
   }
- 
+ /* Only hide SVGs inside elements with the class 'hide-my-svgs' */
+.hide-my-svgs svg {
+    display: none !important;
+    visibility: hidden !important;
+}
+
+/* Your other SVG rules for display: */
+.logo {
+    display: block !important; /* Or whatever display property it should have */
+    visibility: visible !important;
+}
+
+.icon {
+    display: inline-block !important; /* Or whatever display property it should have */
+    visibility: visible !important;
+}
+
   .showroom-desktop-banner{
     display: none;
     box-sizing: border-box;
