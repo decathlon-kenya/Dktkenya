@@ -482,14 +482,14 @@ font-family: 'Roboto Condensed', sans-serif !important;
     text-transform: uppercase;
     font-weight: 900;
     font-style: normal;
-    font-size: 15px !important;
+    font-size: 17px !important;
     line-height: 1.15;
     padding-left: 2.625rem;
     margin: 0;
     margin-right: 30px;
-    color: #3643ba;
+    color: #101010;
     font-family: 'Roboto Condensed', sans-serif !important;
-    margin-top: 30px;  
+    margin-top: 15px;  
   }
 
   .component-container{
