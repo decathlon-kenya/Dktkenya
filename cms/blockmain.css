@@ -1,7 +1,7 @@
 .four_categories_wrapper {
   padding-top: 1rem;
   padding-bottom: 1rem;
-  background-color: rgb(245, 244, 245);
+  background-color: white; /* Changed to white to match the screenshot */
   margin-bottom: 2rem;
   width: 100%;
 }
@@ -12,10 +12,9 @@
 }
 
 .four_categories_title_container {
-  margin-block-start: clamp(1.25rem, 1.0526rem + .8421vw, 2rem);
   margin-left: 1rem;
   margin-right: 1rem;
-  padding-right: 1rem;
+  padding-top: clamp(1.25rem, 1.0526rem + .8421vw, 2rem);
   width: 100%;
 }
 
@@ -25,32 +24,26 @@
 
 .four_categories_title {
   font-size: clamp(1.375rem, 1.2105rem + 0.7018vw, 2rem);
-  font-weight: 600;
+  font-weight: normal;
   letter-spacing: -0.03em;
   padding-inline-end: 5rem;
 }
 
 .four_categories_container {
-  margin-block-start: clamp(1.25rem, 1.0526rem + .8421vw, 2rem);
-  padding-left: 0;
-  padding-right: 0;
-  width: 100%;
+  margin-top: clamp(1.25rem, 1.0526rem + .8421vw, 2rem);
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .four_categories_box {
   display: flex;
   flex-wrap: wrap;
-  margin-left: 0;
-  margin-right: 0;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  gap: 1rem; /* Creates the space between the cards */
 }
 
 .four_categories_category_wrapper {
-  width: 50%;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
-  margin-bottom: 0.875rem;
+  width: calc(50% - 0.5rem); /* Two items per line with a 1rem gap between them */
+  margin-bottom: 1rem;
   box-sizing: border-box;
 }
 
@@ -63,6 +56,10 @@
   min-width: 0;
   display: flex;
   position: relative;
+  /* Additional styles based on screenshot */
+  background-color: #2e307e;
+  color: white;
+  padding: 1rem;
 }
 
 .four_categories_image_wrapper > img {
@@ -71,7 +68,11 @@
 }
 
 @media (min-width: 768px) {
-  .four_categories_box {
+  .four_categories_title_container {
+    margin-left: 2rem;
+    margin-right: 2rem;
+  }
+  .four_categories_container {
     padding-left: 2rem;
     padding-right: 2rem;
   }
@@ -79,26 +80,18 @@
 
 @media (min-width: 1024px) {
   .four_categories_category_wrapper {
-    width: 25%;
-  }
-  .four_categories_box {
-    padding-left: 4rem;
-    padding-right: 4rem;
+    width: calc(25% - 0.75rem); /* Four items per line with a 1rem gap between them */
   }
 }
 
 @media (min-width: 1280px) {
-  .four_categories_box {
+  .four_categories_title_container,
+  .four_categories_container {
     max-width: 1280px;
     margin-left: auto;
     margin-right: auto;
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
   }
-  .four_categories_title_container {
-    max-width: 1280px;
-    margin-left: auto;
-    margin-right: auto;
+  .four_categories_box {
     padding-left: 0;
     padding-right: 0;
   }
