@@ -3,16 +3,18 @@
   padding-bottom: 1rem;
   background-color: rgb(245, 244, 245);
   margin-bottom: 2rem;
-width: 100%;
+  width: 100%;
 }
 
-.four_categories_container {
+.four_categories_container,
+.four_categories_title_container {
   margin-block-start: clamp(1.25rem, 1.0526rem + .8421vw, 2rem);
   margin-left: auto;
   margin-right: auto;
-  padding-left: 0px;
-  padding-right: 0px;
+  padding-left: 1rem;
+  padding-right: 1rem;
   width: 100%;
+  box-sizing: border-box;
 }
 
 .four_categories_title_wrapper {
@@ -21,36 +23,34 @@ width: 100%;
 }
 
 .four_categories_title_container {
-  margin: 0 20px;
+  margin: 0;
   padding-right: 1rem;
   width: 100%;
 }
 
 .four_categories_title_container > h2 {
-  font-style: normal !important; /* Re-evaluate this !important in a full refactor */
+  font-style: normal !important;
 }
 
-.four_categories_title{
+.four_categories_title {
   font-size: clamp(1.375rem, 1.2105rem + 0.7018vw, 2rem);
   font-weight: 600;
   letter-spacing: -0.03em;
-  padding-inline-end: 5rem; /* Consider if this needs to be responsive too */
+  padding-inline-end: 5rem;
 }
 
 .four_categories_box {
   display: flex;
-  flex-wrap: wrap; /* Allows items to wrap to the next line */
-  /* Remove any fixed width on .four_categories_box if it exists elsewhere */
-  margin: 0 -0.5rem; /* Counteract padding on .four_categories_category_wrapper for full bleed */
+  flex-wrap: wrap;
+  margin: 0 -0.5rem;
 }
 
 .four_categories_category_wrapper {
-  /* Mobile: 2 items per line */
   width: 50%;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   margin-bottom: 0.875rem;
-  box-sizing: border-box; /* Crucial for correct width calculation with padding */
+  box-sizing: border-box;
 }
 
 .four_categories_image_wrapper {
@@ -63,58 +63,41 @@ width: 100%;
   display: flex;
   position: relative;
 }
-.four_categories_image_wrapper > img{
+
+.four_categories_image_wrapper > img {
   height: auto;
   max-width: 100%;
 }
 
-/* Media queries in ascending order of min-width */
-@media (min-width: 425px) {
-  .four_categories_container {
-    max-width: 425px;
-  }
-}
-
-@media (min-width: 640px) {
-  .four_categories_container {
-    max-width: 640px;
-  }
-}
-
 @media (min-width: 768px) {
-  .four_categories_container {
+  .four_categories_container,
+  .four_categories_title_container {
     max-width: 768px;
     padding-left: 1rem;
     padding-right: 1rem;
-  }
-
-  .four_categories_title_container {
-    margin: 0 40px;
   }
 }
 
 @media (min-width: 900px) {
   .four_categories_title_container {
-    margin: 0 60px;
+    margin: 0;
   }
 }
 
 @media (min-width: 1024px) {
-  .four_categories_container {
+  .four_categories_container,
+  .four_categories_title_container {
     max-width: 1024px;
-    /* To ensure categories fill width, you might need to adjust container max-width or remove it */
-    /* Or, more commonly, just let the items themselves fill the available space */
   }
+
   .four_categories_category_wrapper {
-    /* Desktop: 4 items per line, fully covering the width */
-    width: 25%; /* 100% / 4 = 25% */
+    width: 25%;
   }
 }
 
 @media (min-width: 1280px) {
-  .four_categories_container {
+  .four_categories_container,
+  .four_categories_title_container {
     max-width: 1280px;
   }
-  /* If you want to maintain 4 per line on even larger screens, no change needed here for .four_categories_category_wrapper */
-  /* If you had a 5-column layout for 1024px+ before, this ensures 4 columns for 1280px+ */
 }
