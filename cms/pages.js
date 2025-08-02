@@ -1,5 +1,4 @@
-<script>
-    function searchFAQs() {
+function searchFAQs() {
       const query = document.getElementById('pages-searchInput').value.toLowerCase();
       const items = document.querySelectorAll('.pages-faq-item');
       let found = 0;
@@ -42,4 +41,3 @@
         parent.classList.toggle('active');
       });
     });
-  </script>
