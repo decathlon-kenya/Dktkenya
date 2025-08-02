@@ -1,1 +1,80 @@
-backgroun
+/* Base styles for the content container */
+.pages-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    color: #1a1a1a;
+    line-height: 1.6;
+}
+
+/* Header Section */
+.pages-header {
+    margin-bottom: 3rem;
+}
+
+.pages-title {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.pages-intro {
+    font-size: 1rem;
+    color: #4b4b4b;
+    max-width: 700px;
+}
+
+/* Cards Section */
+.pages-cards-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+.pages-card {
+    flex: 1;
+}
+
+.pages-card-title {
+    font-size: 1.75rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.pages-card-text {
+    font-size: 1rem;
+    color: #4b4b4b;
+    margin-bottom: 1.5rem;
+}
+
+/* Button */
+.pages-button {
+    display: inline-block;
+    background-color: #3b5998;
+    color: #ffffff;
+    padding: 1rem 1.5rem;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.pages-button:hover {
+    background-color: #2e4a80;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .pages-cards-container {
+        flex-direction: column;
+    }
+
+    .pages-title {
+        font-size: 2rem;
+    }
+
+    .pages-card-title {
+        font-size: 1.5rem;
+    }
+}
