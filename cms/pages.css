@@ -1,4 +1,5 @@
-:root {
+<style>
+    :root {
       --pages-primary: #3643ba;
       --pages-bg: #f9f9f9;
       --pages-text: #111;
@@ -250,7 +251,8 @@
   margin: 20px 0 40px;
 }
 .pages-search-row input {
-   padding: 12px;
+  width: 94%;
+  padding: 12px;
   border-radius: 8px;
   border: 1px solid #ccc;
   font-size: 16px;
@@ -345,7 +347,8 @@
   background: #3643ba;
   color: white;
   padding: 30px;
-  
+  margin: 0 auto 20px auto; /* equal space on sides, 20px bottom */
+  max-width: 96%; 
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -424,3 +427,4 @@ a {
     display: none;
   }
 }
+  </style>
