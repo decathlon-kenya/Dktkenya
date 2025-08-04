@@ -173,11 +173,6 @@
   }
 }
 
-@media (max-width: 480px) {
-  .product--card {
-    height: 250px !important;
-  }
-}
 
 .product-picture-wrapper {
   box-sizing: border-box;
