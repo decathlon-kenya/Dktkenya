@@ -358,9 +358,6 @@
 .pages-faq-section {
      width: 90%;
   padding: 12px !important;
-max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.3s ease;
   
 }
 
