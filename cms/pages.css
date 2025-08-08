@@ -390,7 +390,7 @@ pages-faq-item.active .pages-faq-answer {
       margin-left: 10px;
     }
  .pages-faq-answer {
-      
+       display: block; 
       font-size: 14px;
       color: #e6e6e6;
     }
