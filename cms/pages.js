@@ -16,18 +16,19 @@
       document.getElementById('pages-noResults').classList.toggle('pages-hidden', found > 0);
     }
 
-    window.onload = function () {
-      document.querySelectorAll('.pages-faq-question').forEach(q => {
-        q.addEventListener('click', () => {
-          const parent = q.parentElement;
-          parent.classList.toggle('active');
+   // window.onload = function () {
+//   document.querySelectorAll('.pages-faq-question').forEach(q => {
+//     q.addEventListener('click', () => {
+//       const parent = q.parentElement;
+//       parent.classList.toggle('active');
 
-          const icon = q.querySelector('.pages-faq-toggle');
-          if (parent.classList.contains('active')) {
-            icon.textContent = '–';
-          } else {
-            icon.textContent = '+';
-          }
-        });
-      });
-    };
+//       const icon = q.querySelector('.pages-faq-toggle');
+//       if (parent.classList.contains('active')) {
+//         icon.textContent = '–';
+//       } else {
+//         icon.textContent = '+';
+//       }
+//     });
+//   });
+// };
+
