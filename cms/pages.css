@@ -358,6 +358,10 @@
 .pages-faq-section {
      width: 90%;
   padding: 12px !important;
+    
+max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
   
 }
 
@@ -387,7 +391,7 @@ pages-faq-item.active .pages-faq-answer {
       margin-left: 10px;
     }
  .pages-faq-answer {
-       display: block; 
+     
       font-size: 14px;
       color: #e6e6e6;
     }
