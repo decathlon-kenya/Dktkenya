@@ -358,8 +358,16 @@
 .pages-faq-section {
      width: 90%;
   padding: 12px !important;
+max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
   
 }
+
+pages-faq-item.active .pages-faq-answer {
+      max-height: 300px;
+      margin-top: 5px;
+    }
 .pages-faq-section h2 {
   margin-top: 0;
 }
