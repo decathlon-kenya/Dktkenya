@@ -382,15 +382,9 @@
       margin-left: 10px;
     }
  .pages-faq-answer {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.3s ease;
+      
       font-size: 14px;
       color: #e6e6e6;
-    }
-pages-faq-item.active .pages-faq-answer {
-      max-height: 300px;
-      margin-top: 5px;
     }
 
 /* No Results */
