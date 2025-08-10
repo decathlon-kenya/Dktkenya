@@ -482,8 +482,7 @@
     grid-template-columns: 1fr 1fr 1fr;
   }
 }
-
-    .section-8 {
+ .section-8 {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
@@ -492,7 +491,6 @@
     max-width: 1800px;
     margin: 0 auto;
 }
-
 .section-8 .content {
     flex: 1;
     min-width: 300px;
