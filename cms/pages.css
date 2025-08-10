@@ -401,6 +401,11 @@
   color: #155724;
   background-color: #d4edda;
 }
+.pages-notification.fail {
+  border-left: 4px solid #a7283b;
+  color: #571515;
+  background-color: #edd4d4;
+}
 
 .pages-notification i {
   font-size: 20px;
