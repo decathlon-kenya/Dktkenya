@@ -521,59 +521,6 @@
     display: block;
 }
 
-.section-9 {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    align-items: flex-start;
-    padding: 20px;
-    margin: 0 auto;
-    max-width: 1800px;
-}
-
-.section-9 .content {
-    flex: 1;
-    min-width: 300px;
-}
-
-.section-9 .content p {
-    font-size: 1rem;
-    line-height: 1.6;
-    margin: 0;
-
-}
-
-.section-9 .list {
-    flex: 1;
-    min-width: 300px;
-}
-
-.section-9 .list ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-}
-
-.section-9 .list li {
-    position: relative;
-    padding-left: 30px;
-    margin-bottom: 10px;
-    font-size: 1rem;
-    line-height: 1.6;
-}
-
-.section-9 .list li::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 0;
-    transform: translateY(-50%);
-    width: 20px;
-    height: 20px;
-    background-image: url('https://contents.mediadecathlon.com/s1132138/k$48bdd67f2d24eb09baea8a8c74b7983f/defaut.png?format=auto&f=969x0');
-    background-size: cover;
-    background-repeat: no-repeat;
-}
     .pages-service-container {
         display: flex;
         flex-wrap: wrap;
