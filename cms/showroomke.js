@@ -1,3 +1,4 @@
+>
 const showroomkeAlgoliaDetails = {
     app_id: 'V7XWM1B0JY',
     api_search_key: "fa9245e29a66b9d137778d796c557a96",
@@ -13,9 +14,7 @@ document.addEventListener("alpine:init", () => {
             if (url && url.indexOf("?") > -1) {
                 const urlParts = url.split("?");
                 return `${urlParts[0]}?${newParams}`;
-            } else {
-                return url;
-            }
+            } else return url;
         },
         showroomkeGetProductsManual(productsArr) {
             const clientAlg = algoliasearch(
@@ -29,256 +28,196 @@ document.addEventListener("alpine:init", () => {
                 .then(({ hits }) => {
                     const orderedHits = productsArr.map(id => hits.find(hit => hit.objectID === id));
                     this.products = orderedHits.filter(Boolean);
-                    // Dispatch event to initialize carousel logic after products are loaded
+                    // Trigger carousel initialization after products are loaded
                     document.dispatchEvent(new CustomEvent('showroomke:products-loaded'));
                 })
-                .catch(err => {
-                    console.error('Algolia Error:', err);
-                });
+                .catch(err => console.error('Algolia Error:', err));
         },
     }));
 });
 
-// Standalone script for the generic loader animation
+// Loader animation
 document.addEventListener('DOMContentLoaded', () => {
     const loader = document.getElementById('showroomke-loader');
-    if (loader) {
-        setTimeout(() => {
-            loader.style.display = 'none';
-        }, 500);
-    }
+    if (loader) setTimeout(() => { loader.style.display = 'none'; }, 500);
 });
 
-// Carousel initialization logic, now triggered by a custom event
-document.addEventListener('showroomke:products-loaded', function showroomkeInitCarousel() {
-    const showroomkeProductCarousel = document.querySelector('.showroomke-product-carousel');
-    const showroomkeProductGrid = document.querySelector('.showroomke-product-grid');
-    const showroomkeNextButton = document.querySelector('.showroomke-next-button');
-    const showroomkePrevButton = document.querySelector('.showroomke-prev-button');
-    const showroomkeScrollTrack = document.querySelector('.showroomke-scroll-track');
-    const showroomkeScrollThumb = document.querySelector('.showroomke-scroll-thumb');
-    
-    let showroomkeCurrentPosition = 0;
-    let showroomkeStartX;
-    let showroomkeIsDragging = false;
-    let showroomkeCurrentTranslate;
-    let showroomkePrevTranslate = 0;
-    let showroomkeIsDraggingThumb = false;
-    let showroomkeStartThumbX;
-    let showroomkeStartThumbPosition;
-    let showroomkeDraggedDistance = 0;
-    const showroomkeDragThreshold = 5;
+// Carousel + scroll logic for all grids
+document.addEventListener('showroomke:products-loaded', () => {
+    const carousels = document.querySelectorAll('.showroomke-product-carousel');
 
-    function showroomkeGetProductCardWidth() {
-        if (!showroomkeProductGrid) return 0;
-        const firstCard = showroomkeProductGrid.querySelector('.showroomke-product-card');
-        if (!firstCard) return 0;
-        const cardWidth = firstCard.offsetWidth;
-        const gap = parseFloat(getComputedStyle(showroomkeProductGrid).gap);
-        return cardWidth + gap;
-    }
+    carousels.forEach(carousel => {
+        const productGrid = carousel.querySelector('.showroomke-product-grid');
+        const nextButton = carousel.querySelector('.showroomke-next-button');
+        const prevButton = carousel.querySelector('.showroomke-prev-button');
+        const scrollTrack = carousel.querySelector('.showroomke-scroll-track');
+        const scrollThumb = carousel.querySelector('.showroomke-scroll-thumb');
 
-    function showroomkeUpdateButtons() {
-        if (!showroomkePrevButton || !showroomkeNextButton || !showroomkeProductGrid || !showroomkeProductCarousel) return;
-        showroomkePrevButton.disabled = showroomkeCurrentPosition <= 0;
-        const maxPosition = showroomkeProductGrid.scrollWidth - showroomkeProductCarousel.clientWidth;
-        showroomkeNextButton.disabled = showroomkeCurrentPosition >= maxPosition;
-    }
+        if (!productGrid) return;
 
-    function showroomkeTranslateGrid(position) {
-        if (!showroomkeProductGrid) return;
-        showroomkeProductGrid.style.transform = `translateX(-${position}px)`;
-    }
+        let currentPosition = 0;
+        let startX, isDragging = false, currentTranslate, prevTranslate = 0;
+        let isDraggingThumb = false, startThumbX, startThumbPosition, draggedDistance = 0;
+        const dragThreshold = 5;
 
-    function showroomkeUpdateScrollThumb() {
-        if (!showroomkeScrollTrack || !showroomkeProductGrid || !showroomkeProductCarousel || !showroomkeScrollThumb) return;
-        const carouselClientWidth = showroomkeProductCarousel.clientWidth;
-        const gridScrollWidth = showroomkeProductGrid.scrollWidth;
-        const trackClientWidth = showroomkeScrollTrack.clientWidth;
-
-        if (gridScrollWidth <= carouselClientWidth) {
-            showroomkeScrollTrack.style.display = 'none';
-            return;
-        } else {
-            showroomkeScrollTrack.style.display = 'block';
+        function getProductCardWidth() {
+            const firstCard = productGrid.querySelector('.showroomke-product-card');
+            if (!firstCard) return 0;
+            const gap = parseFloat(getComputedStyle(productGrid).gap);
+            return firstCard.offsetWidth + gap;
         }
 
-        const maxScroll = gridScrollWidth - carouselClientWidth;
-        let thumbWidth = (carouselClientWidth / gridScrollWidth) * trackClientWidth;
-        thumbWidth = Math.max(thumbWidth, 20);
+        function updateButtons() {
+            if (!prevButton || !nextButton) return;
+            prevButton.disabled = currentPosition <= 0;
+            const maxPosition = productGrid.scrollWidth - carousel.clientWidth;
+            nextButton.disabled = currentPosition >= maxPosition;
+        }
 
-        let thumbPosition = (showroomkeCurrentPosition / maxScroll) * (trackClientWidth - thumbWidth);
-        if (isNaN(thumbPosition)) thumbPosition = 0;
+        function translateGrid(position) {
+            productGrid.style.transform = `translateX(-${position}px)`;
+        }
 
-        showroomkeScrollThumb.style.width = `${thumbWidth}px`;
-        showroomkeScrollThumb.style.left = `${thumbPosition}px`;
-    }
+        function updateScrollThumb() {
+            if (!scrollTrack || !scrollThumb) return;
+            const carouselWidth = carousel.clientWidth;
+            const gridWidth = productGrid.scrollWidth;
+            const trackWidth = scrollTrack.clientWidth;
 
-    if(showroomkeNextButton) {
-        showroomkeNextButton.addEventListener('click', function showroomkeNextClick() {
-            const cardWidth = showroomkeGetProductCardWidth();
-            showroomkeCurrentPosition += cardWidth;
-            const maxPosition = showroomkeProductGrid.scrollWidth - showroomkeProductCarousel.clientWidth;
-            if (showroomkeCurrentPosition > maxPosition) {
-                showroomkeCurrentPosition = maxPosition;
+            if (gridWidth <= carouselWidth) {
+                scrollTrack.style.display = 'none';
+                return;
+            } else scrollTrack.style.display = 'block';
+
+            let thumbWidth = (carouselWidth / gridWidth) * trackWidth;
+            thumbWidth = Math.max(thumbWidth, 20);
+
+            let thumbPosition = (currentPosition / (gridWidth - carouselWidth)) * (trackWidth - thumbWidth);
+            if (isNaN(thumbPosition)) thumbPosition = 0;
+
+            scrollThumb.style.width = `${thumbWidth}px`;
+            scrollThumb.style.left = `${thumbPosition}px`;
+        }
+
+        // Buttons
+        if(nextButton) nextButton.addEventListener('click', () => {
+            currentPosition += getProductCardWidth();
+            const maxPosition = productGrid.scrollWidth - carousel.clientWidth;
+            if(currentPosition > maxPosition) currentPosition = maxPosition;
+            translateGrid(currentPosition);
+            updateButtons();
+            updateScrollThumb();
+        });
+
+        if(prevButton) prevButton.addEventListener('click', () => {
+            currentPosition -= getProductCardWidth();
+            if(currentPosition < 0) currentPosition = 0;
+            translateGrid(currentPosition);
+            updateButtons();
+            updateScrollThumb();
+        });
+
+        // Grid drag
+        function handleDragStart(clientX) {
+            isDragging = true;
+            startX = clientX;
+            prevTranslate = currentPosition;
+            productGrid.style.transition = 'none';
+            productGrid.classList.add('is-dragging');
+            draggedDistance = 0;
+        }
+        function handleDragMove(clientX) {
+            if(!isDragging) return;
+            const deltaX = clientX - startX;
+            currentTranslate = prevTranslate - deltaX;
+            draggedDistance = Math.abs(deltaX);
+
+            const maxScroll = productGrid.scrollWidth - carousel.clientWidth;
+            if(currentTranslate < 0) currentTranslate = 0;
+            else if(currentTranslate > maxScroll) currentTranslate = maxScroll;
+
+            translateGrid(currentTranslate);
+            updateScrollThumb();
+        }
+        function handleDragEnd() {
+            if(!isDragging) return;
+            isDragging = false;
+            productGrid.style.transition = 'transform 0.5s ease-in-out';
+            productGrid.classList.remove('is-dragging');
+
+            const cardWidth = getProductCardWidth();
+            let targetCardIndex = Math.round(currentTranslate / cardWidth);
+            let newPosition = targetCardIndex * cardWidth;
+
+            const maxPosition = productGrid.scrollWidth - carousel.clientWidth;
+            if(newPosition < 0) newPosition = 0;
+            if(newPosition > maxPosition) newPosition = maxPosition;
+
+            currentPosition = newPosition;
+            translateGrid(currentPosition);
+            updateButtons();
+            updateScrollThumb();
+        }
+
+        productGrid.addEventListener('mousedown', e => { handleDragStart(e.clientX); e.preventDefault(); });
+        productGrid.addEventListener('touchstart', e => handleDragStart(e.touches[0].clientX));
+        document.addEventListener('mousemove', e => handleDragMove(e.clientX));
+        document.addEventListener('mouseup', handleDragEnd);
+        productGrid.addEventListener('touchmove', e => handleDragMove(e.touches[0].clientX), { passive: false });
+        productGrid.addEventListener('touchend', handleDragEnd);
+        productGrid.addEventListener('touchcancel', handleDragEnd);
+
+        // Thumb drag
+        if(scrollThumb) {
+            function handleThumbDragStart(clientX) {
+                isDraggingThumb = true;
+                startThumbX = clientX;
+                startThumbPosition = scrollThumb.offsetLeft;
+                productGrid.style.transition = 'none';
             }
-            showroomkeTranslateGrid(showroomkeCurrentPosition);
-            showroomkeUpdateButtons();
-            showroomkeUpdateScrollThumb();
-        });
-    }
+            function handleThumbDragMove(clientX) {
+                if(!isDraggingThumb) return;
+                const deltaX = clientX - startThumbX;
+                let newThumbLeft = startThumbPosition + deltaX;
+                const maxThumbLeft = scrollTrack.clientWidth - scrollThumb.offsetWidth;
+                newThumbLeft = Math.max(0, Math.min(newThumbLeft, maxThumbLeft));
 
-    if(showroomkePrevButton) {
-        showroomkePrevButton.addEventListener('click', function showroomkePrevClick() {
-            const cardWidth = showroomkeGetProductCardWidth();
-            showroomkeCurrentPosition -= cardWidth;
-            if (showroomkeCurrentPosition < 0) {
-                showroomkeCurrentPosition = 0;
+                scrollThumb.style.left = `${newThumbLeft}px`;
+
+                const scrollRatio = newThumbLeft / maxThumbLeft;
+                const maxCarouselScroll = productGrid.scrollWidth - carousel.clientWidth;
+                currentPosition = scrollRatio * maxCarouselScroll;
+                translateGrid(currentPosition);
+                updateButtons();
             }
-            showroomkeTranslateGrid(showroomkeCurrentPosition);
-            showroomkeUpdateButtons();
-            showroomkeUpdateScrollThumb();
-        });
-    }
+            function handleThumbDragEnd() {
+                if(!isDraggingThumb) return;
+                isDraggingThumb = false;
+                productGrid.style.transition = 'transform 0.5s ease-in-out';
+                updateButtons();
+                updateScrollThumb();
+            }
 
-    // Unified drag and touch logic
-    function showroomkeHandleDragStart(clientX) {
-        if (!showroomkeProductGrid) return;
-        showroomkeIsDragging = true;
-        showroomkeStartX = clientX;
-        showroomkePrevTranslate = showroomkeCurrentPosition;
-        showroomkeProductGrid.style.transition = 'none';
-        showroomkeProductGrid.classList.add('is-dragging');
-        showroomkeDraggedDistance = 0;
-    }
-
-    function showroomkeHandleDragMove(clientX) {
-        if (!showroomkeIsDragging || !showroomkeProductGrid || !showroomkeProductCarousel) return;
-        const deltaX = clientX - showroomkeStartX;
-        showroomkeCurrentTranslate = showroomkePrevTranslate - deltaX;
-        showroomkeDraggedDistance = Math.abs(deltaX);
-
-        const maxScroll = showroomkeProductGrid.scrollWidth - showroomkeProductCarousel.clientWidth;
-        if (showroomkeCurrentTranslate < 0) {
-            showroomkeCurrentTranslate = 0;
-        } else if (showroomkeCurrentTranslate > maxScroll) {
-            showroomkeCurrentTranslate = maxScroll;
+            scrollThumb.addEventListener('mousedown', e => { handleThumbDragStart(e.clientX); e.preventDefault(); });
+            scrollThumb.addEventListener('touchstart', e => { handleThumbDragStart(e.touches[0].clientX); e.preventDefault(); }, { passive:false });
+            document.addEventListener('mousemove', e => handleThumbDragMove(e.clientX));
+            document.addEventListener('mouseup', handleThumbDragEnd);
+            scrollThumb.addEventListener('touchmove', e => { handleThumbDragMove(e.touches[0].clientX); e.preventDefault(); }, { passive:false });
+            scrollThumb.addEventListener('touchend', handleThumbDragEnd);
+            scrollThumb.addEventListener('touchcancel', handleThumbDragEnd);
         }
 
-        showroomkeTranslateGrid(showroomkeCurrentTranslate);
-        showroomkeUpdateScrollThumb();
-    }
+        updateButtons();
+        updateScrollThumb();
 
-    function showroomkeHandleDragEnd(e) {
-        if (!showroomkeIsDragging || !showroomkeProductGrid || !showroomkeProductCarousel) return;
-        showroomkeIsDragging = false;
-        showroomkeProductGrid.style.transition = 'transform 0.5s ease-in-out';
-        showroomkeProductGrid.classList.remove('is-dragging');
-
-        if (showroomkeDraggedDistance > showroomkeDragThreshold) {
-            e.preventDefault();
-            e.stopPropagation();
-        }
-
-        const cardWidth = showroomkeGetProductCardWidth();
-        let targetCardIndex = Math.round(showroomkeCurrentTranslate / cardWidth);
-        let newPosition = targetCardIndex * cardWidth;
-
-        const maxPosition = showroomkeProductGrid.scrollWidth - showroomkeProductCarousel.clientWidth;
-        if (newPosition < 0) newPosition = 0;
-        if (newPosition > maxPosition) newPosition = maxPosition;
-
-        showroomkeCurrentPosition = newPosition;
-        showroomkeTranslateGrid(showroomkeCurrentPosition);
-        showroomkeUpdateButtons();
-        showroomkeUpdateScrollThumb();
-    }
-    
-    if (showroomkeProductGrid) {
-        showroomkeProductGrid.addEventListener('touchstart', (e) => showroomkeHandleDragStart(e.touches[0].clientX));
-        showroomkeProductGrid.addEventListener('touchmove', (e) => showroomkeHandleDragMove(e.touches[0].clientX), { passive: false });
-        showroomkeProductGrid.addEventListener('touchend', (e) => showroomkeHandleDragEnd(e));
-        showroomkeProductGrid.addEventListener('touchcancel', (e) => showroomkeHandleDragEnd(e));
-
-        showroomkeProductGrid.addEventListener('mousedown', (e) => {
-            showroomkeHandleDragStart(e.clientX);
-            e.preventDefault();
+        window.addEventListener('resize', () => {
+            updateButtons();
+            updateScrollThumb();
+            const maxPosition = productGrid.scrollWidth - carousel.clientWidth;
+            if(currentPosition > maxPosition) {
+                currentPosition = maxPosition;
+                translateGrid(currentPosition);
+            }
         });
-    }
-
-    document.addEventListener('mousemove', (e) => showroomkeHandleDragMove(e.clientX));
-    document.addEventListener('mouseup', (e) => showroomkeHandleDragEnd(e));
-
-    // Drag events for the custom scroll thumb
-    function showroomkeHandleThumbDragStart(clientX) {
-        if (!showroomkeScrollThumb || !showroomkeProductGrid) return;
-        showroomkeIsDraggingThumb = true;
-        showroomkeStartThumbX = clientX;
-        showroomkeStartThumbPosition = showroomkeScrollThumb.offsetLeft;
-        showroomkeProductGrid.style.transition = 'none';
-    }
-
-    function showroomkeHandleThumbDragMove(clientX) {
-        if (!showroomkeIsDraggingThumb || !showroomkeScrollTrack || !showroomkeProductGrid || !showroomkeProductCarousel || !showroomkeScrollThumb) return;
-        const deltaX = clientX - showroomkeStartThumbX;
-        let newThumbLeft = showroomkeStartThumbPosition + deltaX;
-        const maxThumbLeft = showroomkeScrollTrack.clientWidth - showroomkeScrollThumb.offsetWidth;
-        newThumbLeft = Math.max(0, Math.min(newThumbLeft, maxThumbLeft));
-
-        showroomkeScrollThumb.style.left = `${newThumbLeft}px`;
-
-        const scrollRatio = newThumbLeft / maxThumbLeft;
-        const maxCarouselScroll = showroomkeProductGrid.scrollWidth - showroomkeProductCarousel.clientWidth;
-        showroomkeCurrentPosition = scrollRatio * maxCarouselScroll;
-        
-        showroomkeTranslateGrid(showroomkeCurrentPosition);
-        showroomkeUpdateButtons();
-    }
-
-    function showroomkeHandleThumbDragEnd() {
-        if (!showroomkeIsDraggingThumb || !showroomkeProductGrid) return;
-        showroomkeIsDraggingThumb = false;
-        showroomkeProductGrid.style.transition = 'transform 0.5s ease-in-out';
-        showroomkeUpdateButtons();
-        showroomkeUpdateScrollThumb();
-    }
-
-    if (showroomkeScrollThumb) {
-        showroomkeScrollThumb.addEventListener('mousedown', (e) => {
-            showroomkeHandleThumbDragStart(e.clientX);
-            e.preventDefault();
-        });
-    }
-    document.addEventListener('mousemove', (e) => showroomkeHandleThumbDragMove(e.clientX));
-    document.addEventListener('mouseup', showroomkeHandleThumbDragEnd);
-
-    if (showroomkeScrollThumb) {
-        showroomkeScrollThumb.addEventListener('touchstart', (e) => {
-            showroomkeHandleThumbDragStart(e.touches[0].clientX);
-            e.preventDefault();
-        }, { passive: false });
-        showroomkeScrollThumb.addEventListener('touchmove', (e) => {
-            showroomkeHandleThumbDragMove(e.touches[0].clientX);
-            e.preventDefault();
-        }, { passive: false });
-        showroomkeScrollThumb.addEventListener('touchend', showroomkeHandleThumbDragEnd);
-        showroomkeScrollThumb.addEventListener('touchcancel', showroomkeHandleThumbDragEnd);
-    }
-
-    document.querySelectorAll('.showroomke-add-to-cart-button').forEach(button => {
-        button.addEventListener('click', (e) => {
-            e.stopPropagation();
-        });
-    });
-
-    window.addEventListener('resize', () => {
-        showroomkeUpdateButtons();
-        showroomkeUpdateScrollThumb();
-        if (!showroomkeProductGrid || !showroomkeProductCarousel) return;
-        const maxPosition = showroomkeProductGrid.scrollWidth - showroomkeProductCarousel.clientWidth;
-        if (showroomkeCurrentPosition > maxPosition) {
-            showroomkeCurrentPosition = maxPosition;
-            showroomkeTranslateGrid(showroomkeCurrentPosition);
-        }
     });
 });
