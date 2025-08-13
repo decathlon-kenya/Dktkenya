@@ -1,4 +1,10 @@
- #content > div > div > section > div{
+ body {
+    background-color: #ffffff;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+#content > div > div > section > div{
         max-width: 100% !important;
     }
     
