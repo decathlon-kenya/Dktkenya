@@ -1,10 +1,3 @@
->
-const showroomkeAlgoliaDetails = {
-    app_id: 'V7XWM1B0JY',
-    api_search_key: "fa9245e29a66b9d137778d796c557a96",
-    index_name: "prod_en",
-};
-
 document.addEventListener("alpine:init", () => {
     Alpine.data("products", () => ({
         products: [],
@@ -18,17 +11,16 @@ document.addEventListener("alpine:init", () => {
         },
         showroomkeGetProductsManual(productsArr) {
             const clientAlg = algoliasearch(
-                showroomkeAlgoliaDetails.app_id,
-                showroomkeAlgoliaDetails.api_search_key
+                'V7XWM1B0JY',
+                'fa9245e29a66b9d137778d796c557a96'
             );
-            const indexAlg = clientAlg.initIndex(showroomkeAlgoliaDetails.index_name);
+            const indexAlg = clientAlg.initIndex("prod_en");
             const filters = productsArr.map(id => `objectID:${id}`).join(' OR ');
 
             indexAlg.search('', { filters: filters })
                 .then(({ hits }) => {
                     const orderedHits = productsArr.map(id => hits.find(hit => hit.objectID === id));
                     this.products = orderedHits.filter(Boolean);
-                    // Trigger carousel initialization after products are loaded
                     document.dispatchEvent(new CustomEvent('showroomke:products-loaded'));
                 })
                 .catch(err => console.error('Algolia Error:', err));
@@ -36,22 +28,16 @@ document.addEventListener("alpine:init", () => {
     }));
 });
 
-// Loader animation
-document.addEventListener('DOMContentLoaded', () => {
-    const loader = document.getElementById('showroomke-loader');
-    if (loader) setTimeout(() => { loader.style.display = 'none'; }, 500);
-});
-
-// Carousel + scroll logic for all grids
 document.addEventListener('showroomke:products-loaded', () => {
     const carousels = document.querySelectorAll('.showroomke-product-carousel');
 
     carousels.forEach(carousel => {
+        const container = carousel.closest('.showroomke-container');
         const productGrid = carousel.querySelector('.showroomke-product-grid');
-        const nextButton = carousel.querySelector('.showroomke-next-button');
-        const prevButton = carousel.querySelector('.showroomke-prev-button');
-        const scrollTrack = carousel.querySelector('.showroomke-scroll-track');
-        const scrollThumb = carousel.querySelector('.showroomke-scroll-thumb');
+        const nextButton = container.querySelector('.showroomke-next-button');
+        const prevButton = container.querySelector('.showroomke-prev-button');
+        const scrollTrack = container.querySelector('.showroomke-scroll-track');
+        const scrollThumb = container.querySelector('.showroomke-scroll-thumb');
 
         if (!productGrid) return;
 
