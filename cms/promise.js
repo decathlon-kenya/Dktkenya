@@ -12,7 +12,7 @@ function updatePromiseKEDeliveryText() {
 
     const deliveryText = (hours >= 1 && hours < 14)
       ? `Next Delivery: ${deliveryDay}, From 2PM`
-      : "Countrywide Delivery, Without Delay ";
+      : "Countrywide Delivery, No Delay ";
 
     document.getElementById("PromiseKE-dynamic-text").innerText = deliveryText;
 }
