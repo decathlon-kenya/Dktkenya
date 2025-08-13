@@ -10,9 +10,9 @@ function updatePromiseKEDeliveryText() {
     const todayIndex = nowEAT.getUTCDay();
     const deliveryDay = weekdays[todayIndex];
 
-    const deliveryText = (hours >= 1 && hours < 23)
+    const deliveryText = (hours >= 1 && hours < 14)
       ? `Next Delivery: ${deliveryDay}, From 2PM`
-      : "Fastwhy ";
+      : "Countrywide Delivery, Without Delay ";
 
     document.getElementById("PromiseKE-dynamic-text").innerText = deliveryText;
 }
