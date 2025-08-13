@@ -12,7 +12,7 @@ function updatePromiseKEDeliveryText() {
 
     const deliveryText = (hours >= 1 && hours < 23)
       ? `Next Delivery: ${deliveryDay}, From 2PM`
-      : "Fast Countrywide Delivery";
+      : "Fastwhy ";
 
     document.getElementById("PromiseKE-dynamic-text").innerText = deliveryText;
 }
