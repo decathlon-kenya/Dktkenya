@@ -9,6 +9,10 @@
       font-family: 'Inter', sans-serif;
       background-color: var(--pages-bg);
       color: var(--pages-text);
+       margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
     }
 
     .pages-container {
