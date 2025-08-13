@@ -8,6 +8,7 @@
     max-width: 100%;
     margin: 0 auto;
     padding: 20px;
+    font-family: 'Roboto Condensed', sans-serif !important;
 }
 
 /* Loader Styles */
