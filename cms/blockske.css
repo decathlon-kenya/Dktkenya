@@ -1,0 +1,90 @@
+/* Block js file blockske.js */
+  .blockske-swiper-container {
+	position: relative;
+	user-select: none;
+	width: 95%;
+	margin: 0 auto;
+	margin-block-start: clamp(1.25rem, 1.0526rem + .8421vw, 2rem);
+	padding-bottom: 2.5rem;
+	overflow: hidden;
+}
+
+.blockske-card {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	overflow: hidden;
+	border-radius: 0.75rem;
+}
+
+.blockske-card img {
+	width: 100%;
+	height: auto;
+	border-radius: inherit;
+	transition: all .5s cubic-bezier(.215, .61, .355, 1);
+}
+
+#sports-title {
+	padding-inline-end: 5rem;
+	font-style: normal;
+	margin: 0 20px;
+	font-size: clamp(1.375rem, 1.2105rem + 0.7018vw, 2rem);
+	font-weight: 600;
+	white-space: nowrap;
+	letter-spacing: -0.03em;
+}
+
+@media (min-width: 768px) {
+	#sports-title {
+		margin: 0 40px;
+	}
+}
+
+@media (min-width: 900px) {
+	#sports-title {
+		margin: 0 60px;
+	}
+}
+
+.blockske-button,
+.blockske-container:hover .blockske-button.swiper-button-disabled {
+	top: 45% !important;
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity .1s ease-in-out, transform .1s ease-in-out, visibility .1s ease-in-out;
+	transform: scale(.8);
+}
+
+.blockske-button.swiper-button-disabled {
+	display: none !important;
+}
+
+.blockske-button {
+	transform: translateY(0) !important;
+}
+
+.blockske-button-next {
+	right: 10px !important;
+}
+
+.blockske-button-prev {
+	left: 10px !important;
+}
+
+.blockske-card:hover .sports-card-image {
+	transform: scale(1.2);
+}
+
+.blockske-swiper-container:hover .blockske-button {
+	opacity: 1;
+	visibility: visible;
+	transform: scale(1);
+}
+
+@media only screen and (max-width: 767px) {
+	.blockske-swiper-container {
+		margin-right: 0;
+		padding-right: 0.625rem;
+	}
+}
