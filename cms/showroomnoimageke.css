@@ -189,8 +189,8 @@
         }
 
         .showroomke-top-discount-badge {
-            background-color: #ffe066;
-            color: #101010;
+            background-color: #e3262f;
+            color: #ffffff;
             font-size: clamp(0.6rem, 2vw, 0.7rem);
             font-weight: 700;
             padding: 4px 8px;
@@ -258,8 +258,8 @@
         }
 
         .showroomke-price-discount-text {
-            background-color: #ffe066;
-            color: #101010;
+            background-color: #e3262f;
+            color: #ffffff;
             font-size: clamp(0.6rem, 2vw, 0.7rem);
             font-weight: 700;
             padding: 4px 8px;
