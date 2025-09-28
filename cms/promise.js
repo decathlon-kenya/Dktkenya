@@ -11,7 +11,7 @@ function updatePromiseKEDeliveryText() {
     const deliveryDay = weekdays[todayIndex];
 
     const deliveryText = (hours >= 1 && hours < 14)
-      ? `Next Delivery: Today, From 2PM`
+      ? `Next Delivery: Today, From 2PM within Nairobi`
       : "Countrywide Delivery, No Delay ";
 
     document.getElementById("PromiseKE-dynamic-text").innerText = deliveryText;
