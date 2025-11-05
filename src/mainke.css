@@ -1,9 +1,9 @@
-@import url("swiper.css");
-@import url("slider.css");
+@import url("https://decathlon-kenya.github.io/Dktkenya/src/swiper.css");
+@import url("https://decathlon-kenya.github.io/Dktkenya/src/slider.css");
 
 @font-face {
   font-family: "Decathlon Brand";
-  src: url("//Decathlon-Brand-SemiBold.woff2") format("woff2");
+  src: url("https://decathlon-kenya.github.io/Dktkenya/fonts/Decathlon-Brand-SemiBold.woff2") format("woff2");
   font-weight: 600;
   font-style: normal;
   font-display: swap;
@@ -11,7 +11,7 @@
 
 @font-face {
   font-family: "Decathlon Display";
-  src: url("//Decathlon-Display-SemiBold.woff2") format("woff2");
+  src: url("https://decathlon-kenya.github.io/Dktkenya/fonts/Decathlon-Display-SemiBold.woff2") format("woff2");
   font-weight: 600;
   font-style: normal;
   font-display: swap;
@@ -19,7 +19,7 @@
 
 @font-face {
   font-family: "Decathlon Text";
-  src: url("//Decathlon-Text-Medium.woff2") format("woff2");
+  src: url("https://decathlon-kenya.github.io/Dktkenya/fonts/Decathlon-Text-Medium.woff2") format("woff2");
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -27,7 +27,7 @@
 
 @font-face {
   font-family: "Decathlon Text";
-  src: url("//Decathlon-Text-SemiBold.woff2") format("woff2");
+  src: url("https://decathlon-kenya.github.io/Dktkenya/fonts/Decathlon-Text-SemiBold.woff2") format("woff2");
   font-weight: 600;
   font-style: normal;
   font-display: swap;
@@ -1410,3 +1410,4 @@
   background-color: #3643ba;
   color: #fff;
 }
+
