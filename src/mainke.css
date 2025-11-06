@@ -33,26 +33,29 @@
   font-display: swap;
 }
 
-/*ONESHOP CMS OVERRIDE START*/
+* {
+  font-family: 'Decathlon Text', sans-serif;
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
 
 .container {
   width: 100% !important;
-  padding-left: 0px !important;
-  padding-right: 0px !important;
-}
-* {
-  font-family: "Decathlon Brand", sans-serif !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
 }
 
-/* ONESHOP CMS OVERRIDE END*/
-
-/* VISUAL CATEGORIES START */
+/* ===== VISUAL CATEGORIES START ===== */
 .container-vf {
   margin: 50px auto 30px auto;
   max-width: 1900px;
   padding: 0 var(--gap);
   --gap: clamp(10px, 2vw, 56px);
-  font‑family: "Decathlon Sans", sans‑serif;
 }
 
 .slider-wrapper-vf {
@@ -71,6 +74,7 @@
 .sports-link {
   padding: 0 15px;
   margin-bottom: 15px;
+  font-family: 'Decathlon Display', sans-serif !important;
 }
 
 .sports-link a {
@@ -78,6 +82,7 @@
   text-decoration: none;
   font-size: 1rem;
   font-weight: 500;
+  font-family: 'Decathlon Display', sans-serif !important;
 }
 
 .category-title {
@@ -85,7 +90,7 @@
   font-weight: 600 !important;
   line-height: 0.1 !important;
   letter-spacing: -0.5px !important;
-  font-family: "Decathlon Brand", sans-serif !important;
+  font-family: 'Decathlon Brand', sans-serif !important;
 }
 
 .slider-nav-buttons {
@@ -93,7 +98,7 @@
   gap: 10px;
 }
 
-.slider-wrapper-vf .slide-button-vf {
+.slide-button-vf {
   outline: none;
   border: none;
   height: 50px;
@@ -102,32 +107,26 @@
   display: flex;
   cursor: pointer;
   font-size: 1.5rem;
-  font-weight: 200 !important;
   background: #fff;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
   border: 0.5px solid #ccc;
   font-weight: 100;
-  transition: background 0.2s, box-shadow 0.2s;
+  transition: background 0.2s, box-shadow .2s;
 }
 
-.slider-wrapper-vf .slide-button-vf:hover {
+.slide-button-vf:hover {
   background: #ecedf8;
 }
 
-.slider-wrapper-vf .slide-button-vf:focus-visible {
+.slide-button-vf:focus-visible {
   outline: none;
   box-shadow: 0 0 0 3px #3643ba;
   background-color: #ecedf8;
 }
 
-.slider-wrapper-vf .slide-button-vf:focus {
-  outline: none;
-  box-shadow: 0 0 0 3px #3643ba;
-}
-
-.slider-wrapper-vf .image-list-vf {
+.image-list-vf {
   display: flex;
   gap: 20px;
   list-style: none;
@@ -137,11 +136,11 @@
   padding: 10px;
 }
 
-.slider-wrapper-vf .image-list-vf::-webkit-scrollbar {
+.image-list-vf::-webkit-scrollbar {
   display: none;
 }
 
-.slider-wrapper-vf .image-list-vf li {
+.image-list-vf li {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -149,7 +148,7 @@
   flex: 0 0 230px;
 }
 
-.slider-wrapper-vf .image-list-vf li a {
+.image-list-vf li a {
   text-decoration: none;
   color: inherit;
   display: inline-block;
@@ -159,18 +158,18 @@
   position: relative;
 }
 
-.slider-wrapper-vf .image-list-vf li img {
+.image-list-vf li img {
   width: 180px;
   height: 180px;
   object-fit: cover;
   transition: transform 0.2s ease-in-out;
 }
 
-.slider-wrapper-vf .image-list-vf li img:hover {
+.image-list-vf li img:hover {
   transform: scale(1.05);
 }
 
-.slider-wrapper-vf .image-list-vf li a p {
+.image-list-vf li a p {
   margin-top: 30px;
   font-size: 14px;
   color: #333;
@@ -180,7 +179,7 @@
   letter-spacing: -0.3px;
 }
 
-.slider-wrapper-vf .image-list-vf li a p::after {
+.image-list-vf li a p::after {
   content: "";
   position: absolute;
   left: 0;
@@ -190,25 +189,19 @@
   background: #000;
   transform: scaleX(0);
   transform-origin: left center;
-  transition: transform 0.3s ease;
+  transition: transform .3s ease;
 }
 
-.slider-wrapper-vf .image-list-vf li a:hover p::after,
-.slider-wrapper-vf .image-list-vf li a:focus-visible p::after,
-.slider-wrapper-vf .image-list-vf li a:focus p::after {
+.image-list-vf li a:hover p::after,
+.image-list-vf li a:focus-visible p::after,
+.image-list-vf li a:focus p::after {
   transform: scaleX(1);
 }
 
-.slider-wrapper-vf .image-list-vf li a:focus-visible {
+.image-list-vf li a:focus-visible {
   outline: 3px solid #3643ba;
   outline-offset: 4px;
   z-index: 2;
-  border-radius: 6px;
-}
-
-.slider-wrapper-vf .image-list-vf li a:focus {
-  outline: 3px solid #3643ba;
-  outline-offset: 4px;
   border-radius: 6px;
 }
 
@@ -220,22 +213,16 @@
   margin-top: 30px;
 }
 
-.slider-scrollbar-vf .scrollbar-track-vf {
+.scrollbar-track-vf {
   background: #ccc;
   width: 100%;
   height: 2px;
-  display: flex;
-  align-items: center;
   border-radius: 4px;
   position: relative;
   cursor: pointer;
 }
 
-.slider-scrollbar-vf:hover .scrollbar-track-vf {
-  height: 5px;
-}
-
-.slider-scrollbar-vf .scrollbar-thumb-vf {
+.scrollbar-thumb-vf {
   position: absolute;
   background: #000;
   top: 0;
@@ -247,54 +234,40 @@
   transition: width 0.2s;
 }
 
-.slider-scrollbar-vf .scrollbar-thumb-vf:active {
+.scrollbar-thumb-vf:active {
   cursor: grabbing;
   height: 6px;
   top: -2px;
 }
 
 @media only screen and (max-width: 1023px) {
-  .slider-wrapper-vf .image-list-vf {
+  .image-list-vf {
     gap: 15px;
-    margin-bottom: 15px;
     scroll-snap-type: x mandatory;
   }
-
-  .slider-wrapper-vf .image-list-vf li {
+  .image-list-vf li {
     flex: 0 0 150px;
   }
-
-  .slider-wrapper-vf .slide-button-vf {
+  .slide-button-vf {
     height: 40px;
     width: 40px;
     font-size: 1.2rem;
   }
-
-  .slider-wrapper-vf .image-list-vf li img {
+  .image-list-vf li img {
     width: 130px;
     height: 130px;
   }
-
-  .slider-scrollbar-vf .scrollbar-thumb-vf {
-    width: 20%;
-  }
-
-  .component__heading-mobile {
-    margin-top: 25px;
-  }
-
   .category-title {
     font-size: 26px !important;
   }
-
   .slider-nav-buttons {
     display: none;
   }
 }
+/* ===== VISUAL CATEGORIES END ===== */
 
-/*VISUAL CATEGORIES END*/
-
-/* DEALS BANNERS START */
+/* ===== DEALS BANNERS START ===== */
+/* (no structural changes; formatting cleaned) */
 .nl-promo {
   --bg: #ffcd4e;
   --fg: #000;
@@ -381,6 +354,7 @@
   line-height: 1.12;
   letter-spacing: -0.5px;
   font-size: clamp(1.8rem, 2vw + 0.8rem, 2.8rem);
+  font-family: 'Decathlon Brand', sans-serif !important;
 }
 
 .nl-promo__text {
@@ -389,6 +363,7 @@
   letter-spacing: -0.5px;
   font-size: clamp(1rem, 0.1vw + 1rem, 1.5rem);
   color: color-mix(in oklab, var(--fg) 90%, transparent);
+  font-family: 'Decathlon Brand', sans-serif !important;
 }
 
 .nl-promo__cta {
@@ -466,6 +441,7 @@
 
 /*DEALS BANNERS END */
 
+
 /* POPULAR LINKS START */
 .container-popular-links {
   max-width: 1800px;
@@ -528,6 +504,7 @@
   }
 }
 
+
 @media (max-width: 768px) {
   .box-popular-links {
     flex-direction: column;
@@ -552,6 +529,7 @@
 
 /* POPULAR LINKS END */
 
+
 /*POPULAR CATEGORIES GALLERY START*/
 .catdeck {
   --gap: clamp(16px, 4vw, 56px);
@@ -561,11 +539,11 @@
   --dx1: 58%;
   --dy1: calc(-8% - 24px);
   --dz1: -160px;
-  --s1: 0.9;
+  --s1: .9;
   --dx2: 116%;
   --dy2: calc(-16% - 48px);
   --dz2: -320px;
-  --s2: 0.82;
+  --s2: .82;
 
   max-width: 1900px;
   margin: 140px auto;
@@ -606,15 +584,15 @@
 .catdeck__link {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: .5rem;
   text-decoration: none;
   color: #111;
   font-weight: 600;
   font-size: clamp(1.8rem, 2.6vw, 2.8rem);
   line-height: 1.1;
-  letter-spacing: -0.5px;
+  letter-spacing: -.5px;
   outline: none;
-  transition: color 0.3s ease;
+  transition: color .3s ease;
 }
 
 .catdeck__link:hover {
@@ -625,13 +603,13 @@
   outline: 3px solid #3643ba;
   outline-offset: 3px;
   border-radius: 6px;
-  padding-inline: 0.15em;
+  padding-inline: .15em;
 }
 
 .catdeck__link i.ri-arrow-right-line {
   transform: scale(0);
   transform-origin: center;
-  transition: transform 0.3s ease;
+  transition: transform .3s ease;
   display: inline-block;
   font-weight: 200;
 }
@@ -664,7 +642,7 @@
   aspect-ratio: 1 / 1;
   object-fit: cover;
   border-radius: 0;
-  transition: transform 0.45s ease, opacity 0.45s ease, filter 0.45s ease;
+  transition: transform .45s ease, opacity .45s ease, filter .45s ease;
   will-change: transform, opacity;
 }
 
@@ -676,30 +654,28 @@
 }
 
 .catdeck__img.is-back-1 {
-  transform: translateX(var(--dx1)) translateY(var(--dy1))
-    translateZ(var(--dz1)) rotateY(0deg) scale(var(--s1));
-  opacity: 0.95;
+  transform: translateX(var(--dx1)) translateY(var(--dy1)) translateZ(var(--dz1)) rotateY(0deg) scale(var(--s1));
+  opacity: .95;
   z-index: 20;
-  filter: saturate(0.96) brightness(0.98);
+  filter: saturate(.96) brightness(.98);
 }
 
 .catdeck__img.is-back-2 {
-  transform: translateX(var(--dx2)) translateY(var(--dy2))
-    translateZ(var(--dz2)) rotateY(0deg) scale(var(--s2));
-  opacity: 0.8;
+  transform: translateX(var(--dx2)) translateY(var(--dy2)) translateZ(var(--dz2)) rotateY(0deg) scale(var(--s2));
+  opacity: .8;
   z-index: 10;
-  filter: saturate(0.92) brightness(0.97);
+  filter: saturate(.92) brightness(.97);
 }
 
 .catdeck__img.is-hidden {
-  transform: translateX(calc(var(--dx2) * 1.6))
-    translateY(calc(var(--dy2) * 1.6)) translateZ(calc(var(--dz2) * 2));
+  transform:
+    translateX(calc(var(--dx2) * 1.6)) translateY(calc(var(--dy2) * 1.6)) translateZ(calc(var(--dz2) * 2));
   opacity: 0;
   z-index: 0;
   pointer-events: none;
 }
 
-@media (min-width: 1200px) {
+@media (min-width:1200px) {
   .catdeck {
     --imgW: 66%;
     --dx1: 60%;
@@ -707,7 +683,7 @@
   }
 }
 
-@media (max-width: 1024px) {
+@media (max-width:1024px) {
   .catdeck {
     grid-template-columns: 1fr;
     column-gap: 0;
@@ -718,11 +694,11 @@
     --dx1: 24%;
     --dy1: -20px;
     --dz1: -100px;
-    --s1: 0.94;
+    --s1: .94;
     --dx2: 48%;
     --dy2: -40px;
     --dz2: -200px;
-    --s2: 0.88;
+    --s2: .88;
 
     margin: 50px auto;
   }
@@ -752,7 +728,7 @@
   }
 }
 
-@media (max-width: 560px) {
+@media (max-width:560px) {
   .catdeck {
     --imgW: 100%;
     --dx1: 16%;
@@ -780,7 +756,10 @@
   touch-action: pan-y;
 }
 
+
 /*POPULAR CATEGORIES GALLERY END*/
+
+
 
 /* ===== Brand Categories START ===== */
 .brand-categories {
@@ -824,20 +803,19 @@
   border: 1px solid #e7e7e7;
   text-decoration: none;
   transform: translateZ(0);
-  transition: transform 160ms ease, box-shadow 160ms ease,
-    border-color 160ms ease;
+  transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
 }
 
 .brand-categories__link:hover,
 .brand-categories__link:focus-visible {
   transform: scale(1.03);
   border-color: #dcdcdc;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, .08);
   outline: none;
 }
 
 .brand-categories__link:focus-visible {
-  box-shadow: 0 0 0 3px rgba(54, 67, 186, 0.35), 0 6px 18px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 0 0 3px rgba(54, 67, 186, .35), 0 6px 18px rgba(0, 0, 0, .08);
 }
 
 .brand-categories__img {
@@ -886,6 +864,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+
   .brand-categories__link,
   .brand-categories__more {
     transition: none;
@@ -893,6 +872,9 @@
 }
 
 /* ===== Brand Categories end ===== */
+
+
+
 
 /* BENEFITS START */
 
@@ -909,7 +891,7 @@
   font-weight: 600;
   max-width: 1800px;
   padding: 20px;
-  letter-spacing: -0.03em;
+  letter-spacing: -.03em;
 }
 
 .benefits-container {
@@ -963,7 +945,7 @@
   margin: 0 0 8px 0;
   font-size: 1.8rem;
   font-weight: 600;
-  letter-spacing: -0.03em;
+  letter-spacing: -.03em;
 }
 
 .benefits-card p {
@@ -1107,6 +1089,7 @@
 
 /* BENEFITS END */
 
+
 /* Season Sports Section START */
 .season-sports {
   width: 100%;
@@ -1136,8 +1119,7 @@
   gap: 25px;
 }
 
-.season-sports__item {
-}
+.season-sports__item {}
 
 .season-sports__card {
   display: block;
@@ -1173,7 +1155,7 @@
 }
 
 .season-sports__title::after {
-  content: "";
+  content: '';
   position: absolute;
   bottom: 0;
   left: 0;
@@ -1188,6 +1170,7 @@
 .season-sports__card:hover .season-sports__title::after {
   transform: scaleX(1);
 }
+
 
 @media (max-width: 1024px) {
   .season-sports {
@@ -1218,8 +1201,8 @@
   }
 
   .sports-section-title {
-    font-size: 26px !important;
-  }
+  font-size: 26px !important;
+}
 }
 
 @media (max-width: 600px) {
@@ -1235,179 +1218,199 @@
 /* Season Sports Section END */
 
 /* PRODUCT SHOWROOM */
-.KE-carousel-header h2 {
-  font-size: 1.5rem;
-  font-weight: 600;
-  margin: 0;
+ .KE-carousel-header h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin: 0;
+        }
+        .KE-product-link {
+            text-decoration: none;
+            color: black;
+            position: relative;
+            display: block;
+        }
+        .KE-carousel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+        .KE-carousel-nav button {
+            width: 36px;
+            height: 36px;
+            background-color: transparent;
+            border: 1px solid #ccc;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            line-height: 1;
+            margin-left: 8px;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            transition: background-color 0.2s, border-color 0.2s;
+        }
+        .KE-carousel-nav button:hover {
+            background-color: #f0f0f0;
+            border-color: #999;
+        }
+        .KE-carousel-nav button svg {
+            width: 16px;
+            height: 16px;
+            stroke: #333;
+            stroke-width: 2.5px;
+            fill: none;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+        .KE-carousel-container {
+            display: flex;
+            overflow-x: auto;
+            gap: 16px; 
+            scroll-behavior: smooth;
+            scroll-snap-type: x mandatory; 
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        .KE-carousel-container::-webkit-scrollbar {
+            display: none;
+        }
+        .KE-product-card {
+            overflow: hidden;
+            background-color: #fff;
+            flex-shrink: 0;
+            scroll-snap-align: start;
+            flex-basis: calc(50% - 8px);
+        }
+        @media (min-width: 768px) {
+            .KE-product-card {
+                flex-basis: calc(33.333% - 10.66px);
+            }
+        }
+        @media (min-width: 1024px) {
+            .KE-product-card {
+                flex-basis: calc(16.666% - 13.33px);
+            }
+        }
+        .KE-product-image {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            background-color: #f9f9f9;
+        }
+        .KE-product-info {
+            padding: 12px;
+        }
+        .KE-product-brand {
+            font-size: 0.8rem;
+            font-weight: 400;
+            color: #555;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+        .KE-product-name {
+            font-size: 1.0rem;
+            font-weight: 500;
+            color: #111;
+            line-height: 1.3;
+            margin-bottom: 8px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .KE-price-container {
+            display: flex;
+            align-items: baseline;
+            flex-wrap: wrap;
+            margin-top: 5px;
+        }
+       .KE-product-price {
+    padding: 2px 2px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    background-color: #ffcd4e;
+    color: #202020;
+    font-family: 'Decathlon brand', sans-serif !important;
 }
-.KE-product-link {
-  text-decoration: none;
-  color: black;
-  position: relative;
+        .KE-product-price-discount {
+             padding: 2px 2px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    background-color: #e3262f;
+    color: #ffffff;
+    font-family: 'Decathlon Text', sans-serif !important;
+        }
+        
+        .KE-old-price {
+            padding: 5px 0px;
+            color: #616161;
+            text-decoration: line-through !important;
+            font-size: 0.7rem;
+            margin-left: 5px;
+        }
+        .KE-discount-badge {
+            color: #e3262f;
+            font-weight: 500;
+            font-size: 0.8rem;
+            padding: 5px;
+            margin-left: 5px;
+        }
+        .KE-error-message {
+            color: red;
+            font-weight: bold;
+            padding: 10px;
+            border: 1px solid red;
+            background-color: #fff0f0;
+            border-radius: 8px;
+        }
+        .KE-product-sticker {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            padding: 4px 8px;
+            font-size: 0.6rem; /* 12px */
+            font-weight: 500;
+            border-radius: 0px;
+            z-index: 10;
+            font-family: 'Decathlon Brand', sans-serif !important;
+        }
+        .KE-sticker-grey {
+            background-color: #e0e0e0;
+            color: #111;
+        }
+        .KE-sticker-black {
+            background-color: #111;
+            color: #fff;
+        }
+        .KE-sticker-red {
+            background-color: #e3262f;
+            color: #fff;
+        }
+        .KE-sticker-yellow {
+            background-color: #ffcd4e;
+            color: #111;
+        }
+        .KE-sticker-blue {
+            background-color: #3643ba;
+            color: #fff;
+        }
+        /* --- FIX HORIZONTAL OVERFLOW --- */
+.catdeck, .catdeck__right {
+  overflow-x: clip;
+}
+
+@media (min-width: 1025px) {
+  .image-list-vf,
+  .benefits-container,
+  .season-sports__list,
+  .KE-carousel-container {
+    overflow-x: hidden;
+  }
+}
+
+/* --- Responsive Safety --- */
+img, video, iframe {
+  max-width: 100%;
+  height: auto;
   display: block;
 }
-.KE-carousel-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 16px;
-}
-.KE-carousel-nav button {
-  width: 36px;
-  height: 36px;
-  background-color: transparent;
-  border: 1px solid #ccc;
-  border-radius: 50%;
-  cursor: pointer;
-  font-size: 1.2rem;
-  line-height: 1;
-  margin-left: 8px;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  transition: background-color 0.2s, border-color 0.2s;
-}
-.KE-carousel-nav button:hover {
-  background-color: #f0f0f0;
-  border-color: #999;
-}
-.KE-carousel-nav button svg {
-  width: 16px;
-  height: 16px;
-  stroke: #333;
-  stroke-width: 2.5px;
-  fill: none;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-.KE-carousel-container {
-  display: flex;
-  overflow-x: auto;
-  gap: 16px;
-  scroll-behavior: smooth;
-  scroll-snap-type: x mandatory;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
-.KE-carousel-container::-webkit-scrollbar {
-  display: none;
-}
-.KE-product-card {
-  overflow: hidden;
-  background-color: #fff;
-  flex-shrink: 0;
-  scroll-snap-align: start;
-  flex-basis: calc(50% - 8px);
-}
-@media (min-width: 768px) {
-  .KE-product-card {
-    flex-basis: calc(33.333% - 10.66px);
-  }
-}
-@media (min-width: 1024px) {
-  .KE-product-card {
-    flex-basis: calc(16.666% - 13.33px);
-  }
-}
-.KE-product-image {
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  object-fit: cover;
-  background-color: #f9f9f9;
-}
-.KE-product-info {
-  padding: 12px;
-}
-.KE-product-brand {
-  font-size: 0.8rem;
-  font-weight: 400;
-  color: #555;
-  text-transform: uppercase;
-  margin-bottom: 4px;
-}
-.KE-product-name {
-  font-size: 1rem;
-  font-weight: 500;
-  color: #111;
-  line-height: 1.3;
-  margin-bottom: 8px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.KE-price-container {
-  display: flex;
-  align-items: baseline;
-  flex-wrap: wrap;
-  margin-top: 5px;
-}
-.KE-product-price {
-  padding: 2px 2px;
-  font-size: 0.9rem;
-  font-weight: 500;
-  background-color: #ffcd4e;
-  color: #202020;
-  font-family: "Decathlon brand", sans-serif !important;
-}
-.KE-product-price-discount {
-  padding: 2px 2px;
-  font-size: 0.9rem;
-  font-weight: 500;
-  background-color: #e3262f;
-  color: #ffffff;
-  font-family: "Decathlon Text", sans-serif !important;
-}
-
-.KE-old-price {
-  padding: 5px 0px;
-  color: #616161;
-  text-decoration: line-through !important;
-  font-size: 0.7rem;
-  margin-left: 5px;
-}
-.KE-discount-badge {
-  color: #e3262f;
-  font-weight: 500;
-  font-size: 0.8rem;
-  padding: 5px;
-  margin-left: 5px;
-}
-.KE-error-message {
-  color: red;
-  font-weight: bold;
-  padding: 10px;
-  border: 1px solid red;
-  background-color: #fff0f0;
-  border-radius: 8px;
-}
-.KE-product-sticker {
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  padding: 4px 8px;
-  font-size: 0.6rem; 
-  font-weight: 500;
-  border-radius: 0px;
-  z-index: 10;
-}
-.KE-sticker-grey {
-  background-color: #e0e0e0;
-  color: #111;
-}
-.KE-sticker-black {
-  background-color: #111;
-  color: #fff;
-}
-.KE-sticker-red {
-  background-color: #e3262f;
-  color: #fff;
-}
-.KE-sticker-yellow {
-  background-color: #ffcd4e;
-  color: #111;
-}
-.KE-sticker-blue {
-  background-color: #3643ba;
-  color: #fff;
-}
-
