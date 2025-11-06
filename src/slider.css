@@ -1,4 +1,35 @@
- ._slider-container {
+@font-face {
+  font-family: "Decathlon Brand";
+  src: url("https://decathlon-kenya.github.io/Dktkenya/fonts/Decathlon-Brand-SemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Decathlon Display";
+  src: url("https://decathlon-kenya.github.io/Dktkenya/fonts/Decathlon-Display-SemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Decathlon Text";
+  src: url("https://decathlon-kenya.github.io/Dktkenya/fonts/Decathlon-Text-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Decathlon Text";
+  src: url("https://decathlon-kenya.github.io/Dktkenya/fonts/Decathlon-Text-SemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+._slider-container {
         width: 100%;
         margin: 0 auto;
         overflow: hidden;
@@ -8,7 +39,7 @@
     ._slider-inner {
         position: relative;
         width: 100%;
-        height: auto;
+        height: 500px;
         padding-top: clamp(40px, 8vw, 100px);
     }
 
@@ -88,6 +119,7 @@
         margin: 0 auto 10px auto;
         width: fit-content;
         font-weight: 600 !important;
+        font-family: 'Decathlon Brand', sans-serif !important;
     }
 
 
@@ -97,6 +129,7 @@
         text-transform: uppercase;
         letter-spacing: 0em;
         font-weight: 500 !important;
+        font-family: 'Decathlon Brand', sans-serif !important;
     }
 
     .slide-button {
@@ -109,6 +142,7 @@
         font-weight: 500;
         text-decoration: none;
         font-size: 12px !important;
+        font-family: 'Decathlon Display', sans-serif !important;
     }
 
     .swiper-slide._revamp-slide.swiper-slide-active {
