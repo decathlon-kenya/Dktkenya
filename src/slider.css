@@ -40,7 +40,7 @@
 ._slider-inner {
     position: relative;
     width: 100%;
-    height: auto;
+    height: 80%;
     padding-top: clamp(40px, 8vw, 100px);
 }
 
@@ -333,4 +333,5 @@
         max-width: 1900px;
     }
 }
+
 
