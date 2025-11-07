@@ -29,266 +29,254 @@
   font-style: normal;
   font-display: swap;
 }
+
 ._slider-container {
-        width: 100%;
-        margin: 0 auto;
-        overflow: hidden;
-        max-width: 2560px;
+    width: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+    max-width: 2560px;
+}
+
+._slider-inner {
+    position: relative;
+    width: 100%;
+    height: 550px;
+    padding-top: clamp(40px, 8vw, 100px);
+}
+
+.swiper._revamp {
+    width: 100%;
+    overflow: visible;
+}
+
+.swiper-slide._revamp-slide {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    background: white;
+    aspect-ratio: 3/3.5;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    min-height: 280px;
+}
+
+.slide-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.image-gradient-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0) 50%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.slide-content {
+    position: relative;
+    z-index: 1;
+    margin: 20px 10px !important;
+    text-align: center;
+    color: #fff;
+    padding: 0 10px;
+}
+
+.swiper-slide .slide-content {
+    opacity: 0;
+    transform: perspective(200px) rotateY(-30deg) translateX(-20%);
+    transition: opacity 0.2s ease-in-out, transform 0.7s ease-out;
+}
+
+.swiper-slide:hover .slide-content {
+    opacity: 1;
+    transform: perspective(200px) rotateY(0) translateX(0);
+}
+
+.swiper-slide.swiper-slide-active .slide-content {
+    opacity: 1;
+    transform: perspective(200px) rotateY(0) translateX(0);
+    transition: opacity 0.2s ease-in-out, transform 0.7s ease-out;
+}
+
+.slide-title {
+    font-size: clamp(1.1rem, 2vw, 3rem);
+    letter-spacing: -0.5px;
+    line-height: 1.16 !important;
+    text-align: center;
+    margin: 0 auto 10px auto;
+    width: fit-content;
+    font-weight: 600 !important;
+    font-family: 'Decathlon Brand', sans-serif !important;
+}
+
+.slide-subtitle {
+    font-size: 16px;
+    margin: 10px 0;
+    text-transform: uppercase;
+    letter-spacing: 0em;
+    font-weight: 500 !important;
+    font-family: 'Decathlon Brand', sans-serif !important;
+}
+
+.slide-button {
+    background: #3643ba;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 40px;
+    cursor: pointer;
+    font-weight: 500;
+    text-decoration: none;
+    font-size: 12px !important;
+    font-family: 'Decathlon Display', sans-serif !important;
+}
+
+.swiper-slide._revamp-slide.swiper-slide-active {
+    transform: scale(1.1) translateY(-4.5%);
+    z-index: 2;
+}
+
+.swiper-slide-next,
+.swiper-slide-prev {
+    transform: scale(1) translateY(0);
+}
+
+.swiper-button-next,
+.swiper-button-prev,
+.swiper-button {
+    color: #000;
+    background-color: #f8f8f9;
+    border-radius: 50px;
+    width: 45px;
+    font-size: 15px;
+    border: 1px solid #ccc;
+}
+
+.swiper-button-next>.icon,
+.swiper-button-prev>.icon {
+    stroke-width: 1px;
+    inline-size: 32px;
+    display: inline-block;
+    color: black;
+}
+
+.swiper-button-prev:hover,
+.swiper-button-next:hover {
+    background-color: #ecedf8;
+    transition: 0.5s;
+}
+
+.swiper-button-next:after,
+.swiper-button-prev:after {
+    font-size: 15px !important;
+}
+
+.swiper-button-next {
+    background-image: unset !important;
+}
+
+.swiper-button-prev {
+    background-image: unset !important;
+}
+
+.swiper-pagination-bullet {
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    line-height: 20px;
+    font-size: 12px;
+    color: #000;
+    opacity: 1;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.swiper-pagination-bullet.swiper-pagination-bullet-active {
+    color: #fff;
+    background: linear-gradient(45deg, rgb(246, 146, 89), rgb(241, 105, 117));
+}
+
+.swiper-slide._revamp-slide:hover {
+    transform: scale(1.1) translateY(-4.5%);
+    transition: transform 0.3s ease;
+    z-index: 2;
+}
+
+.slide-link-re {
+    text-decoration: none;
+    color: #fff;
+    display: block;
+}
+
+@media only screen and (max-width: 1024px) {
+
+    .swiper-button-next,
+    .swiper-button-prev {
+        display: none !important;
     }
+}
+
+@media only screen and (max-width: 500px) {
 
     ._slider-inner {
-        position: relative;
-        width: 100%;
-        height: 550px;
-        padding-top: clamp(40px, 8vw, 100px);
-    }
-
-    .swiper._revamp {
-        width: 100%;
-        overflow: visible;
-    }
-
-    .swiper-slide._revamp-slide {
-        text-align: center;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-        align-items: center;
-        background: white;
-        aspect-ratio: 3/3.5;
-        position: relative;
-        overflow: hidden;
-        transition: transform 0.3s ease;
-    }
-
-    .slide-image {
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
-
-    .image-gradient-overlay {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(to top, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0) 50%);
-        pointer-events: none;
-        z-index: 1;
-    }
-
-    .slide-content {
-        position: relative;
-        z-index: 1;
-        margin: 20px 10px !important;
-        text-align: center;
-        color: #fff;
-        padding: 0 10px;
-    }
-
-
-    /* animation start */
-    .swiper-slide .slide-content {
-        opacity: 0;
-        transform: perspective(200px) rotateY(-30deg) translateX(-20%);
-        transition: opacity 0.2s ease-in-out, transform 0.7s ease-out;
-    }
-
-    .swiper-slide:hover .slide-content {
-        opacity: 1;
-        transform: perspective(200px) rotateY(0) translateX(0);
-    }
-
-    .swiper-slide.swiper-slide-active .slide-content {
-        opacity: 1;
-        transform: perspective(200px) rotateY(0) translateX(0);
-        transition: opacity 0.2s ease-in-out, transform 0.7s ease-out;
-    }
-
-    /*animation end */
-
-
-    .slide-title {
-        font-size: clamp(1.1rem, 2vw, 3rem);
-        letter-spacing: -0.5px;
-        line-height: 1.16 !important;
-        text-align: center;
-        margin: 0 auto 10px auto;
-        width: fit-content;
-        font-weight: 600 !important;
-        font-family: 'Decathlon Brand', sans-serif !important;
-    }
-
-
-    .slide-subtitle {
-        font-size: 16px;
-        margin: 10px 0;
-        text-transform: uppercase;
-        letter-spacing: 0em;
-        font-weight: 500 !important;
-        font-family: 'Decathlon Brand', sans-serif !important;
-    }
-
-    .slide-button {
-        background: #3643ba;
-        color: white;
-        padding: 8px 16px;
-        border: none;
-        border-radius: 40px;
-        cursor: pointer;
-        font-weight: 500;
-        text-decoration: none;
-        font-size: 12px !important;
-        font-family: 'Decathlon Display', sans-serif !important;
+        padding: 0;
     }
 
     .swiper-slide._revamp-slide.swiper-slide-active {
-        transform: scale(1.1) translateY(-4.5%);
-        z-index: 2;
-    }
-
-    .swiper-slide-next,
-    .swiper-slide-prev {
         transform: scale(1) translateY(0);
     }
-
-    .swiper-button-next,
-    .swiper-button-prev,
-    .swiper-button {
-        color: #000;
-        background-color: #f8f8f9;
-        border-radius: 50px;
-        width: 45px;
-        font-size: 15px;
-        border: 1px solid #ccc;
-    }
-
-    .swiper-button-next>.icon,
-    .swiper-button-prev>.icon {
-        stroke-width: 1px;
-        inline-size: 32px;
-        display: inline-block;
-        color: black;
-    }
-
-    .swiper-button-prev:hover,
-    .swiper-button-next:hover {
-        background-color: #ecedf8;
-        transition: 0.5s;
-    }
-
-    .swiper-button-next:after,
-    .swiper-button-prev:after {
-        font-size: 15px !important;
-    }
-
-    .swiper-button-next {
-        background-image: unset !important;
-    }
-
-    .swiper-button-prev {
-        background-image: unset !important;
-    }
-
-    .swiper-pagination-bullet {
-        width: 20px;
-        height: 20px;
-        text-align: center;
-        line-height: 20px;
-        font-size: 12px;
-        color: #000;
-        opacity: 1;
-        background: rgba(0, 0, 0, 0.2);
-    }
-
-    .swiper-pagination-bullet.swiper-pagination-bullet-active {
-        color: #fff;
-        background: linear-gradient(45deg, rgb(246, 146, 89), rgb(241, 105, 117));
-    }
-
-
-    .swiper-slide._revamp-slide:hover {
-        transform: scale(1.1) translateY(-4.5%);
-        transition: transform 0.3s ease;
-        z-index: 2;
-    }
-
-    .slide-link-re {
-        text-decoration: none;
-        color: #fff;
-        display: block;
-    }
-
-    /*
-.slide-link-re img {
-    height: -webkit-fill-available !important;
 }
-*/
 
-    @media only screen and (max-width: 1024px) {
+.normal-price-sw {
+    font-size: 16px;
+    letter-spacing: 0em;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
 
-        .swiper-button-next,
-        .swiper-button-prev {
-            display: none !important;
-        }
-    }
+.normal-price-sw span {
+    padding: 2px 5px;
+    background-color: #ffcd4e;
+    color: #010101;
+}
 
-    @media only screen and (max-width: 500px) {
+.sale-price-sw {
+    font-size: 16px;
+    letter-spacing: 0em;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
 
-        ._slider-inner {
-            padding: 0;
-        }
+.sale-price-sw small {
+    text-decoration: line-through;
+}
 
-        .swiper-slide._revamp-slide.swiper-slide-active {
-            transform: scale(1) translateY(0);
-        }
-    }
+.sale-price-sw span {
+    padding: 2px 5px;
+    background-color: #e20c18;
+    color: #fff;
+}
 
-    .normal-price-sw {
-        font-size: 16px;
-        letter-spacing: 0em;
-        font-weight: 500;
-        margin-bottom: 10px;
-    }
+.slide-title span {
+    display: inline-block;
+}
 
-    .normal-price-sw span {
-        padding: 2px 5px;
-        background-color: #ffcd4e;
-        color: #010101;
-    }
+.slide-title span:nth-of-type(odd) {
+    padding-right: 5cqi;
+}
 
-    .sale-price-sw {
-        font-size: 16px;
-        letter-spacing: 0em;
-        font-weight: 500;
-        margin-bottom: 10px;
-    }
-
-    .sale-price-sw small {
-        text-decoration: line-through;
-    }
-
-    .sale-price-sw span {
-        padding: 2px 5px;
-        background-color: #e20c18;
-        color: #fff;
-    }
-
-    .slide-title span {
-        display: inline-block;
-    }
-
-    .slide-title span:nth-of-type(odd) {
-        padding-right: 5cqi;
-    }
-
-    .slide-title span:nth-of-type(even) {
-        padding-left: 5cqi;
-    }
-
+.slide-title span:nth-of-type(even) {
+    padding-left: 5cqi;
+}
 
 .swiper-buttons-mobile {
   display: none;
@@ -304,46 +292,44 @@
   }
 }
 
+.nav-buttons-left,
+.nav-buttons-right {
+    display: flex;
+    gap: 10px;
+}
 
-    .nav-buttons-left,
-    .nav-buttons-right {
-        display: flex;
-        gap: 10px;
+.nav-button-mobile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    border: 1px solid #ccc;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: background 0.3s;
+    width: 50px;
+    height: 50px;
+}
+
+.nav-button-mobile:hover {
+    background: #ecedf8;
+}
+
+.nav-button-mobile i {
+    font-size: 20px;
+    font-weight: 200;
+}
+
+@media only screen and (min-width: 1024px) {
+    .nav-buttons-left {
+        display: none !important;
     }
 
-    .nav-button-mobile {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: white;
-        border: 1px solid #ccc;
-        padding: 10px;
-        cursor: pointer;
-        border-radius: 50%;
-        transition: background 0.3s;
-        width: 50px;
-        height: 50px;
+    .swiper-buttons-mobile {
+        justify-content: right;
+        margin: 15px auto;
+        padding-right: 20px;
+        max-width: 1900px;
     }
-
-    .nav-button-mobile:hover {
-        background: #ecedf8;
-    }
-
-    .nav-button-mobile i {
-        font-size: 20px;
-        font-weight: 200;
-    }
-
-    @media only screen and (min-width: 1024px) {
-        .nav-buttons-left {
-            display: none !important;
-        }
-
-        .swiper-buttons-mobile {
-            justify-content: right;
-            margin: 15px auto;
-            padding-right: 20px;
-            max-width: 1900px;
-        }
-    }
-
+}
