@@ -1,0 +1,312 @@
+:root {
+            --theme-bg: #3643ba;
+            --theme-text: #ffffff;
+            --highlight-color: #ffcd4e;
+            --countdown-unit-bg: #ffffff;
+            --arrow-bg: #ffffff;
+            --arrow-color: var(--theme-bg);
+            --countdown-text-color: var(--theme-bg);
+        }
+
+        .ke-counter--sales {
+            --theme-bg: #e20c18;
+            --theme-text: #ffffff;
+            --highlight-color: #ffcd4e;
+            --arrow-color: #e20c18;
+            --countdown-text-color: #e20c18;
+        }
+
+        .ke-counter--deals {
+            --theme-bg: #ffcd4e;
+            --theme-text: #000000;
+            --highlight-color: #e20c18;
+            --countdown-unit-bg: #000000;
+            --arrow-bg: #ffffff;
+            --arrow-color: #ffcd4e;
+            --countdown-text-color: #ffcd4e;
+        }
+
+        .ke-counter--blue {
+            --theme-bg: #3643ba;
+            --theme-text: #ffffff;
+            --highlight-color: #ffcd4e;
+            --arrow-color: #3643ba;
+            --countdown-text-color: #3643ba;
+        }
+
+        .ke-counter--black {
+            --theme-bg: #1a1a1a;
+            --theme-text: #ffffff;
+            --highlight-color: #ffcd4e;
+            --arrow-color: #1a1a1a;
+            --countdown-text-color: #1a1a1a;
+        }
+
+        .ke-counter__global-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            position: relative;
+        }
+
+        .ke-counter-wrapper {
+            max-width: 1920px;
+            margin: 20px auto;
+        }
+
+        .ke-counter {
+            display: flex;
+            justify-content: space-between;
+            background-color: var(--theme-bg);
+            color: var(--theme-text);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            padding: 0;
+            min-height: 100px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+        }
+
+        .ke-counter__global-link:hover .ke-counter {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .ke-counter__ribbon-bg {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            height: 150%;
+            width: auto;
+            opacity: 0.5;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .ke-counter__top-row-mobile {
+            display: flex;
+            flex-grow: 1;
+            margin-right: 30px;
+            width: auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .ke-counter__media {
+            flex-shrink: 0;
+            width: clamp(168px, 24vw, 192px);
+            align-self: stretch;
+            overflow: hidden;
+            transition: transform 0.3s ease-out;
+            display: flex;
+            gap: 2px;
+        }
+
+        .ke-counter__image {
+            flex: 1;
+            min-width: 0;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .ke-counter__info {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: clamp(15px, 2vw, 25px);
+            margin-bottom: 0;
+        }
+
+        .ke-counter__title {
+            font-size: clamp(18px, 3vw, 22px);
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            margin: 0 0 5px;
+            line-height: 1.2;
+        }
+
+        .ke-counter__text {
+            font-size: clamp(13px, 2vw, 15px);
+            margin: 0 0 10px;
+            opacity: 0.9;
+        }
+
+        .ke-counter__pricing {
+            display: flex;
+            align-items: baseline;
+            gap: 12px;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .ke-counter__price-label {
+            font-size: clamp(26px, 5vw, 36px);
+            font-weight: 800;
+            color: var(--highlight-color);
+            opacity: 1;
+            line-height: 1;
+        }
+
+        .ke-counter__price--old {
+            font-size: clamp(14px, 2.2vw, 16px);
+            text-decoration: line-through;
+            opacity: 0.8;
+        }
+
+        .ke-counter__price--current {
+            font-size: clamp(16px, 3vw, 20px);
+            font-weight: 500;
+            color: inherit;
+        }
+
+        .ke-counter__action-group {
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            gap: clamp(18px, 3vw, 30px);
+            margin-left: 0;
+            padding-inline: clamp(15px, 2vw, 25px);
+            position: relative;
+            z-index: 2;
+        }
+
+        .ke-counter__countdown-label {
+            font-size: clamp(12px, 2vw, 14px);
+            margin: 0 0 8px;
+            font-weight: 500;
+            
+        }
+
+        .ke-counter__time {
+            display: flex;
+            gap: clamp(7px, 2vw, 12px);
+            font-weight: 700;
+        }
+
+        .time-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: clamp(38px, 5vw, 45px);
+            flex-shrink: 0;
+        }
+
+        .time-box .number {
+            font-size: clamp(20px, 4vw, 26px);
+            line-height: 1;
+            background-color: var(--countdown-unit-bg);
+            color: var(--countdown-text-color);
+            width: 100%;
+            text-align: center;
+            aspect-ratio: 1 / 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .time-box .label {
+            font-size: clamp(9px, 1.5vw, 10px);
+            text-transform: uppercase;
+            margin-top: 4px;
+            opacity: 0.8;
+            color: var(--theme-text);
+        }
+
+        .ke-counter__cta-button {
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 24px;
+            border-radius: 5px;
+            background-color: #3643ba;
+            color: #ffffff;
+            font-size: clamp(14px, 2.2vw, 16px);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+            transition: background-color 0.2s, color 0.2s, transform 0.2s,
+                box-shadow 0.2s;
+        }
+
+        .ke-counter__global-link:hover .ke-counter__cta-button {
+            background-color: #ffcd4e;
+            Color: #292929;
+        }
+
+        @media (max-width: 900px) {
+            .ke-counter {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: clamp(10px, 3vw, 15px);
+            }
+
+            .ke-counter__ribbon-bg {
+                display: none;
+            }
+
+            .ke-counter__top-row-mobile {
+                display: flex;
+                align-items: flex-start;
+                width: 100%;
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+
+            .ke-counter__media {
+                position: static;
+                transform: none;
+                margin-right: 10px;
+                width: 100px;
+                height: 50px;
+                flex-shrink: 0;
+                display: flex;
+                gap: 2px;
+            }
+
+            .ke-counter__info {
+                order: 1;
+                width: auto;
+                padding: 0;
+            }
+
+            .ke-counter__text {
+                font-size: clamp(12px, 2vw, 14px);
+            }
+
+            .ke-counter__action-group {
+                order: 2;
+                width: 100%;
+                justify-content: space-between;
+                margin-top: 10px;
+                padding-top: 10px;
+                border-top: 1px solid rgba(255, 255, 255, 0.2);
+                padding-inline: 0;
+            }
+
+            .time-box {
+                width: clamp(35px, 4.5vw, 40px);
+            }
+
+            .time-box .number {
+                font-size: clamp(18px, 3.5vw, 20px);
+            }
+
+            .time-box .label {
+                font-size: 9px;
+            }
+
+            .ke-counter__cta-button {
+                padding: 8px 16px;
+                font-size: 14px;
+                margin-left: auto;
+            }
+
+            .ke-counter__countdown-display {
+                text-align: left;
+                align-items: flex-start;
+            }
+        }
