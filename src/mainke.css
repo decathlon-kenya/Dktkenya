@@ -86,7 +86,7 @@ html, body {
 }
 
 .category-title {
-  font-size: 32px !important;
+  font-size: clamp(20px, 4vw, 32px);
   font-weight: 600 !important;
   line-height: 0.1 !important;
   letter-spacing: -0.5px !important;
@@ -257,9 +257,7 @@ html, body {
     width: 130px;
     height: 130px;
   }
-  .category-title {
-    font-size: 18px !important;
-  }
+ 
   .slider-nav-buttons {
     display: none;
   }
@@ -1414,4 +1412,5 @@ img, video, iframe {
   height: auto;
   display: block;
 }
+
 
