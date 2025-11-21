@@ -86,7 +86,7 @@ html, body {
 }
 
 .category-title {
-  font-size: clamp(20px, 4vw, 32px);
+  font-size: clamp(18px, 4vw, 32px);
   font-weight: 600 !important;
   line-height: 0.1 !important;
   letter-spacing: -0.5px !important;
@@ -1412,5 +1412,6 @@ img, video, iframe {
   height: auto;
   display: block;
 }
+
 
 
