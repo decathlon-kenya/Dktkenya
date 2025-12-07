@@ -1413,7 +1413,7 @@ img, video, iframe {
   display: block;
 }
 
-    .heroKE-section {
+.heroKE-section {
         width: 100vw;
         margin-left: calc(50% - 50vw);
         margin-right: calc(50% - 50vw);
@@ -1433,7 +1433,7 @@ img, video, iframe {
 
     .heroKE-img {
         width: 100%;
-        height: 470px;   
+        height: 470px; /* Fixed height for Desktop is fine */
         object-fit: cover;
         object-position: center;
         display: block;
@@ -1441,8 +1441,12 @@ img, video, iframe {
 
     @media (max-width: 768px) {
         .heroKE-img {
-            height: 1750px;
+            /* CHANGED: Auto allows the image to scale naturally */
+            height: auto; 
+            /* OPTIONAL: Ensures it doesn't get too short on tiny screens */
+            min-height: 250px; 
         }
     }
+
 
 
