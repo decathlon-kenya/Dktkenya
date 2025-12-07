@@ -345,6 +345,7 @@
         width: 100%;
         position: relative;
         overflow: hidden;
+        /* No fixed height needed here if the image is relative */
     }
 
     .heroKE-link {
@@ -355,7 +356,8 @@
 
     .heroKE-img {
         width: 100%;
-        height: 100%; 
+        /* 1. On DESKTOP, keep your fixed height if you want a banner look */
+        height: 470px; 
         object-fit: cover;
         object-position: center;
         display: block;
@@ -363,11 +365,14 @@
 
     @media (max-width: 768px) {
         .heroKE-img {
-            position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover; 
+            /* 2. REMOVE position: absolute */
+            position: static; 
+            
+            /* 3. SET height to auto so the full mobile image shows */
+            height: auto; 
+            
+            /* 4. Reset object-fit so it doesn't crop */
+            object-fit: contain; 
         }
     }
 
