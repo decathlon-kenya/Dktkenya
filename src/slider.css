@@ -357,7 +357,7 @@
     .heroKE-img {
         width: 100%;
         /* 1. On DESKTOP, keep your fixed height if you want a banner look */
-        height: 470px; 
+        
         object-fit: cover;
         object-position: center;
         display: block;
@@ -375,6 +375,7 @@
             object-fit: contain; 
         }
     }
+
 
 
 
