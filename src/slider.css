@@ -335,45 +335,44 @@
 }
 
 
+
 .heroKE-section {
-        width: 100vw;
-        margin-left: calc(50% - 50vw);
-        margin-right: calc(50% - 50vw);
-    }
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+}
 
-    .heroKE-wrapper {
-        width: 100%;
-        position: relative;
-        overflow: hidden;
-        /* No fixed height needed here if the image is relative */
-    }
 
-    .heroKE-link {
-        display: block;
-        width: 100%;
-    }
+.heroKE-wrapper {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    font-size: 0;       
+    line-height: 0;     
+}
 
+.heroKE-link {
+    display: block;
+    width: 100%;
+}
+
+.heroKE-img {
+    width: 100%;
+    height: auto;      
+    display: block;      
+    object-fit: cover;  
+    object-position: center;
+}
+
+
+@media (max-width: 768px) {
     .heroKE-img {
-        width: 100%;
-        /* 1. On DESKTOP, keep your fixed height if you want a banner look */
-        
-        object-fit: cover;
+        object-fit: contain; 
         object-position: center;
-        display: block;
+        height: auto;        
     }
+}
 
-    @media (max-width: 768px) {
-        .heroKE-img {
-            /* 2. REMOVE position: absolute */
-            position: static; 
-            
-            /* 3. SET height to auto so the full mobile image shows */
-            height: auto; 
-            
-            /* 4. Reset object-fit so it doesn't crop */
-            object-fit: contain; 
-        }
-    }
 
 
 
