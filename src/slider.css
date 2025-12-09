@@ -351,7 +351,6 @@
     .heroKE-link {
         display: block;
         width: 100%;
-        height: 100%;
     }
 
     .heroKE-img {
@@ -375,6 +374,7 @@
             object-fit: contain; 
         }
     }
+
 
 
 
