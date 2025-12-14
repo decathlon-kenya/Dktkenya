@@ -2018,7 +2018,7 @@ iframe {
 
 .promiseKE-section {
   margin-bottom: 20px;
-  font-family: 'Decathlon Brand', sans-serif;
+  font-family: "Decathlon Brand", sans-serif !important;
 }
 
 .promiseKE-container {
@@ -2078,4 +2078,5 @@ iframe {
     font-size: 1rem;
   }
 }
+
 
