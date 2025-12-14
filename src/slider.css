@@ -45,7 +45,7 @@
     position: relative;
     width: 100%;
     height: auto%;
-    padding-top: clamp(40px, 8vw, 100px);
+    padding-top: clamp(40px, 5vw, 60px);
 }
 
 .swiper._revamp {
@@ -359,6 +359,7 @@
     width: 100%;
     height: auto;
   }
+
 
 
 
