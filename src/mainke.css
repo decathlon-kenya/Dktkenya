@@ -82,11 +82,14 @@ body {
 .container-vf {
   margin: 50px auto 30px auto;
   max-width: 1900px;
-  
-  padding: clamp(16px, 4vw, 56px); 
-  
+
+  /* define variable first */
   --gap: clamp(16px, 4vw, 56px);
+
+  /* top/bottom 16px, left/right responsive */
+  padding: 16px var(--gap);
 }
+
 
 
 .slider-wrapper-vf {
@@ -2079,6 +2082,7 @@ iframe {
     font-size: 1rem;
   }
 }
+
 
 
 
