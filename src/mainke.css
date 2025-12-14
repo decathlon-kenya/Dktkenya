@@ -2827,131 +2827,65 @@ img, video, iframe {
 }
 
 
-
 .PromiseKE-container {
-
   display: flex;
-
-  justify-content: space-around;
-
-  align-items: center;
-
-  background-color: #3643ba;
-
-  color: white;
-
-  padding: 1rem;
-
   flex-wrap: wrap;
-
+  justify-content: space-around;
+  align-items: center;
   gap: 1rem;
-
+  padding: 1rem;
   margin-bottom: 20px;
-
+  background-color: #3643ba;
+  color: white;
   font-family: 'Decathlon Brand', sans-serif !important;
-
+  border-radius: 0; /* ensures sharp corners */
 }
-
-
 
 .PromiseKE-box {
-
   display: flex;
-
   align-items: center;
-
-  gap: 0.5rem;
-
-  font-size: 1rem;
-
-  flex: 1 1 100%;
-
   justify-content: center;
-
+  gap: 0.5rem;
   white-space: nowrap;
-
+  flex: 1 1 100%;
+  font-size: 1rem;
 }
-
-
 
 .PromiseKE-icon {
-
   font-size: 1.2rem;
-
 }
-
-
 
 .PromiseKE-text {
-
   font-weight: 500;
-
-  white-space: nowrap;
-
 }
-
-
 
 .PromiseKE-divider {
-
   width: 1px;
-
   height: 1.5rem;
-
   background-color: white;
-
   display: none;
-
 }
 
-
-
-/* Show all promises on screens 600px and above */
-
+/* Medium and larger screens */
 @media (min-width: 600px) {
-
   .PromiseKE-box {
-
     flex: 0 1 auto;
-
   }
-
-
-
   .PromiseKE-divider {
-
     display: inline-block;
-
   }
-
 }
 
-
-
-/* Hide non-delivery items on small screens */
-
+/* Small screens */
 @media (max-width: 599px) {
-
   .PromiseKE-desktop-only {
-
     display: none !important;
-
   }
-
-
-
   .PromiseKE-box {
-
     font-size: 0.85rem;
-
   }
-
-
-
   .PromiseKE-icon {
-
     font-size: 1rem;
-
   }
-
 }
+
