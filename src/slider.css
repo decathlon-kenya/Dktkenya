@@ -29,7 +29,11 @@
   font-style: normal;
   font-display: swap;
 }
-
+ html, body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+ }
 ._slider-container {
     width: 100%;
     margin: 0 auto;
@@ -336,42 +340,26 @@
 
 
 
-.heroKE-section {
-    width: 100vw;
-    margin-left: calc(50% - 50vw);
-    margin-right: calc(50% - 50vw);
-}
-
-
-.heroKE-wrapper {
-    width: 100%;
+._heropicKE {
     position: relative;
-    overflow: hidden;
-    font-size: 0;       
-    line-height: 0;     
-}
+    width: 100vw;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    padding: 20px 0;
+  }
 
-.heroKE-link {
+  ._heropicKE_image {
+    display: block;
+  }
+
+  ._heropicKE_image img {
     display: block;
     width: 100%;
-}
+    height: auto;
+  }
 
-.heroKE-img {
-    width: 100%;
-    height: auto;      
-    display: block;      
-    object-fit: cover;  
-    object-position: center;
-}
-
-
-@media (max-width: 768px) {
-    .heroKE-img {
-        object-fit: contain; 
-        object-position: center;
-        height: auto;        
-    }
-}
 
 
 
