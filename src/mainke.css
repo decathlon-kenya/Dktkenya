@@ -1417,13 +1417,13 @@ img, video, iframe {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background-color: #353fc4;
+  background-color: #3643ba;
   color: white;
   padding: 1rem;
   flex-wrap: wrap;
   gap: 1rem;
   margin-bottom: 20px;
-  font-family: 'decathlon vf inter', sans-serif;
+  font-family: 'Decathlon Brand', sans-serif !important;
 }
 
 .PromiseKE-box {
@@ -1477,6 +1477,7 @@ img, video, iframe {
     font-size: 1rem;
   }
 }
+
 
 
 
