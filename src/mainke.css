@@ -2016,64 +2016,66 @@ iframe {
   display: block;
 }
 
-.PromiseKE-container {
+.promiseKE-section {
+  margin-bottom: 20px;
+  font-family: 'Decathlon Brand', sans-serif;
+}
+
+.promiseKE-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
   align-items: center;
   gap: 1rem;
   padding: 1rem;
-  margin-bottom: 20px;
-  background-color: #3643ba !important;
+  background-color: #ff4d4d;
   color: white;
-  font-family: "Decathlon Brand", sans-serif !important;
-  border-radius: 0 !important;
+  border-radius: 6px;
 }
 
-.PromiseKE-box {
+.promiseKE-box {
   display: flex;
   align-items: center;
-  justify-content: center;
   gap: 0.5rem;
   white-space: nowrap;
-  flex: 1 1 100%;
   font-size: 1rem;
 }
 
-.PromiseKE-icon {
+.promiseKE-icon {
   font-size: 1.2rem;
 }
 
-.PromiseKE-text {
+.promiseKE-text {
   font-weight: 500;
 }
 
-.PromiseKE-divider {
+.promiseKE-divider {
   width: 1px;
   height: 1.5rem;
   background-color: white;
   display: none;
 }
 
-/* Medium and larger screens */
+/* Desktop */
 @media (min-width: 600px) {
-  .PromiseKE-box {
+  .promiseKE-box {
     flex: 0 1 auto;
   }
-  .PromiseKE-divider {
+  .promiseKE-divider {
     display: inline-block;
   }
 }
 
-/* Small screens */
+/* Mobile */
 @media (max-width: 599px) {
-  .PromiseKE-desktop-only {
+  .desktop-only {
     display: none !important;
   }
-  .PromiseKE-box {
+  .promiseKE-box {
     font-size: 0.85rem;
   }
-  .PromiseKE-icon {
+  .promiseKE-icon {
     font-size: 1rem;
   }
 }
+
