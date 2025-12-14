@@ -81,13 +81,13 @@ body {
 
 .container-vf {
   margin: 50px auto 30px auto;
-
   max-width: 1900px;
-
-  padding: 0 var(--gap);
-
-  --gap: clamp(10px, 2vw, 56px);
+  
+  padding: clamp(16px, 4vw, 56px); 
+  
+  --gap: clamp(16px, 4vw, 56px);
 }
+
 
 .slider-wrapper-vf {
   display: flex;
@@ -2079,6 +2079,7 @@ iframe {
     font-size: 1rem;
   }
 }
+
 
 
 
