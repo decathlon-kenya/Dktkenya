@@ -79,23 +79,11 @@ body {
 
 /* ===== VISUAL CATEGORIES START ===== */
 
-.container-vf {
-  /* Center the container with top/bottom margins */
-  margin: 50px auto 30px auto;
-
-  /* Maximum width of the container */
-  max-width: 1900px;
-
-  /* Horizontal padding variable (reduced by half) */
-  --gap: clamp(8px, 2vw, 28px);
-
-  /* Padding: top/bottom 8px, left/right responsive */
-  padding: 8px var(--gap);
-  
-  /* Optional: box-sizing to include padding in width calculations */
-  box-sizing: border-box;
-}
-
+.container-vf { 
+  margin: 50px auto 30px auto; 
+  max-width: 1900px; 
+  padding: 0 var(--gap); 
+  --gap: clamp(6px, 2vw, 56px); }
 
 
 
@@ -2089,6 +2077,7 @@ iframe {
     font-size: 1rem;
   }
 }
+
 
 
 
