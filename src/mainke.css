@@ -2079,6 +2079,109 @@ iframe {
 }
 
 
+.blocksKE-container {
+  padding: 20px;
+  font-family: sans-serif;
+  text-align: left;
+}
+
+.blocksKE-title {
+   font-size: clamp(18px, 4vw, 32px);
+  font-weight: 600 !important;
+  line-height: 0.1 !important;
+  letter-spacing: -0.5px !important;
+  font-family: "Decathlon Brand", sans-serif !important;
+}
+
+/* Scroll wrapper */
+.blocksKE-scroll-wrapper {
+  position: relative;
+}
+
+/* Cards container */
+.blocksKE-cards-container {
+  display: flex;
+  gap: 16px;
+  padding: 10px 0;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Hide scrollbar for all browsers */
+.blocksKE-cards-container::-webkit-scrollbar {
+  display: none;
+}
+.blocksKE-cards-container {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Individual card */
+.blocksKE-card {
+  display: block;
+  border-radius: 0px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+  flex: 0 0 calc(50% - 8px); /* two cards per view */
+  scroll-snap-align: start;
+}
+
+.blocksKE-card:hover {
+  transform: scale(1.02);
+}
+
+.blocksKE-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Custom arrow buttons */
+.blocksKE-arrow {
+  display: none;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.5);
+  color: white;
+  border: none;
+  font-size: 28px;
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.blocksKE-left {
+  left: 5px;
+}
+
+.blocksKE-right {
+  right: 5px;
+}
+
+/* Desktop: 4 cards per row, no scroll */
+@media (min-width: 769px) {
+  .blocksKE-cards-container {
+    overflow-x: hidden;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  .blocksKE-card {
+    flex: 1 1 calc(25% - 12px);
+  }
+}
+
+/* Mobile: show arrows */
+@media (max-width: 768px) {
+  .blocksKE-arrow {
+    display: block;
+  }
+}
+
 
 
 
