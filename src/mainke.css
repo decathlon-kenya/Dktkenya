@@ -2018,7 +2018,9 @@ iframe {
 
 .promiseKE-section {
   margin-bottom: 20px;
-  font-family: "Decathlon Brand", sans-serif !important;
+  font-family: "Decathlon Brand", sans-serif !important;  
+  background-color: #3643ba;
+   border-radius: 0 !important; 
 }
 
 .promiseKE-container {
@@ -2028,7 +2030,6 @@ iframe {
   align-items: center;
   gap: 1rem;
   padding: 1rem;
-  background-color: #ff4d4d;
   color: white;
   border-radius: 6px;
 }
@@ -2078,5 +2079,6 @@ iframe {
     font-size: 1rem;
   }
 }
+
 
 
