@@ -1,6 +1,23 @@
+/* --- GLOBAL VARIABLES & IMPORTS --- */
 @import url("https://decathlon-kenya.github.io/Dktkenya/src/swiper.css");
 @import url("https://decathlon-kenya.github.io/Dktkenya/src/slider.css");
 
+:root {
+  /* Colors */
+  --color-primary: #3643ba; /* Decathlon Blue */
+  --color-sales: #e3262f; /* Decathlon Red */
+  --color-promo: #ffcd4e; /* Decathlon Yellow */
+  --color-text-dark: #333;
+  --color-text-light: #fff;
+  --color-border-light: #ccc;
+  --color-bg-light: #fff;
+
+  /* Layout */
+  --container-max-width: 1800px;
+  --section-margin-y: 50px;
+}
+
+/* --- FONT FACES --- */
 @font-face {
   font-family: "Decathlon Brand";
   src: url("https://decathlon-kenya.github.io/Dktkenya/fonts/Decathlon-Brand-SemiBold.woff2") format("woff2");
@@ -17,6 +34,7 @@
   font-display: swap;
 }
 
+/* Consolidated Decathlon Text (Medium and SemiBold weights) */
 @font-face {
   font-family: "Decathlon Text";
   src: url("https://decathlon-kenya.github.io/Dktkenya/fonts/Decathlon-Text-Medium.woff2") format("woff2");
@@ -33,6 +51,7 @@
   font-display: swap;
 }
 
+/* --- BASE & UTILITIES --- */
 * {
   font-family: 'Decathlon Text', sans-serif;
   box-sizing: border-box;
@@ -44,15 +63,35 @@ html, body {
   overflow-x: hidden;
 }
 
+img, video, iframe {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.sr-only {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* --- GENERAL CONTAINERS --- */
+
 .container {
   width: 100% !important;
   padding-left: 0 !important;
   padding-right: 0 !important;
 }
 
-/* ===== VISUAL CATEGORIES START ===== */
+/* ===== VISUAL CATEGORIES START (VF) ===== */
 .container-vf {
-  margin: 50px auto 30px auto;
+  margin: var(--section-margin-y) auto 30px auto;
   max-width: 1900px;
   padding: 0 var(--gap);
   --gap: clamp(10px, 2vw, 56px);
@@ -74,15 +113,15 @@ html, body {
 .sports-link {
   padding: 0 15px;
   margin-bottom: 15px;
-  font-family: 'Decathlon Display', sans-serif !important;
+  font-family: 'Decathlon Display', sans-serif;
 }
 
 .sports-link a {
-  color: #3643ba;
+  color: var(--color-primary); 
   text-decoration: none;
   font-size: 1rem;
   font-weight: 500;
-  font-family: 'Decathlon Display', sans-serif !important;
+  font-family: 'Decathlon Display', sans-serif;
 }
 
 .category-title {
@@ -90,7 +129,7 @@ html, body {
   font-weight: 600 !important;
   line-height: 0.1 !important;
   letter-spacing: -0.5px !important;
-  font-family: 'Decathlon Brand', sans-serif !important;
+  font-family: 'Decathlon Brand', sans-serif;
 }
 
 .slider-nav-buttons {
@@ -111,7 +150,7 @@ html, body {
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  border: 0.5px solid #ccc;
+  border: 0.5px solid var(--color-border-light); 
   font-weight: 100;
   transition: background 0.2s, box-shadow .2s;
 }
@@ -122,21 +161,24 @@ html, body {
 
 .slide-button-vf:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 3px #3643ba;
+  box-shadow: 0 0 0 3px var(--color-primary); 
   background-color: #ecedf8;
 }
 
+/* Mobile Scrolling Properties Consolidated */
 .image-list-vf {
   display: flex;
   gap: 20px;
   list-style: none;
-  overflow-x: auto;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
+  overflow-x: auto; /* Kept for mobile/default */
+  scroll-behavior: smooth; /* Added for consistency */
+  scroll-snap-type: x mandatory; /* Consolidated */
+  scrollbar-width: none; /* Consolidated */
+  -ms-overflow-style: none; /* Consolidated */
   padding: 10px;
 }
 
-.image-list-vf::-webkit-scrollbar {
+.image-list-vf::-webkit-scrollbar { /* Consolidated */
   display: none;
 }
 
@@ -172,7 +214,7 @@ html, body {
 .image-list-vf li a p {
   margin-top: 30px;
   font-size: 14px;
-  color: #333;
+  color: var(--color-text-dark); 
   position: relative;
   display: inline-block;
   font-weight: 500;
@@ -199,7 +241,7 @@ html, body {
 }
 
 .image-list-vf li a:focus-visible {
-  outline: 3px solid #3643ba;
+  outline: 3px solid var(--color-primary); 
   outline-offset: 4px;
   z-index: 2;
   border-radius: 6px;
@@ -214,7 +256,7 @@ html, body {
 }
 
 .scrollbar-track-vf {
-  background: #ccc;
+  background: var(--color-border-light); 
   width: 100%;
   height: 2px;
   border-radius: 4px;
@@ -257,24 +299,23 @@ html, body {
     width: 130px;
     height: 130px;
   }
- 
+  
   .slider-nav-buttons {
     display: none;
   }
 }
 /* ===== VISUAL CATEGORIES END ===== */
 
-/* ===== DEALS BANNERS START ===== */
-/* (no structural changes; formatting cleaned) */
+/* ===== DEALS BANNERS START (NL-PROMO) ===== */
 .nl-promo {
-  --bg: #ffcd4e;
+  --bg: #ffcd4e; /* Default, overridden by themes */
   --fg: #000;
   display: block;
   text-decoration: none;
   color: var(--fg);
   background: var(--bg);
-  max-width: 1800px;
-  margin: 50px auto;
+  max-width: var(--container-max-width); 
+  margin: var(--section-margin-y) auto; 
 }
 
 .nl-promo:focus {
@@ -282,28 +323,28 @@ html, body {
 }
 
 .nl-promo:focus-visible {
-  outline: 3px solid #3643ba;
+  outline: 3px solid var(--color-primary); 
   outline-offset: 6px;
 }
 
 .theme-deals {
-  --bg: #ffcd4e;
+  --bg: var(--color-promo); 
   --fg: #000;
 }
 
 .theme-sales {
-  --bg: #e3262f;
-  --fg: #fff;
+  --bg: var(--color-sales); 
+  --fg: var(--color-text-light); 
 }
 
 .theme-blue {
-  --bg: #3643ba;
-  --fg: #fff;
+  --bg: var(--color-primary); 
+  --fg: var(--color-text-light); 
 }
 
 .theme-black {
   --bg: #000;
-  --fg: #fff;
+  --fg: var(--color-text-light); 
 }
 
 .nl-promo__inner {
@@ -321,7 +362,7 @@ html, body {
   display: flex;
   align-items: flex-end;
   justify-content: flex-end;
-  background-color: #fff !important;
+  background-color: var(--color-bg-light) !important; 
 }
 
 .nl-promo__img {
@@ -352,7 +393,7 @@ html, body {
   line-height: 1.12;
   letter-spacing: -0.5px;
   font-size: clamp(1.8rem, 2vw + 0.8rem, 2.8rem);
-  font-family: 'Decathlon Brand', sans-serif !important;
+  font-family: 'Decathlon Brand', sans-serif;
 }
 
 .nl-promo__text {
@@ -361,7 +402,7 @@ html, body {
   letter-spacing: -0.5px;
   font-size: clamp(1rem, 0.1vw + 1rem, 1.5rem);
   color: color-mix(in oklab, var(--fg) 90%, transparent);
-  font-family: 'Decathlon Brand', sans-serif !important;
+  font-family: 'Decathlon Brand', sans-serif;
 }
 
 .nl-promo__cta {
@@ -400,7 +441,7 @@ html, body {
     grid-template-areas: "content media";
     align-items: stretch;
     padding-right: clamp(1px, 2vw, 60px);
-    box-shadow: inset 0 40px 0 0 #fff;
+    box-shadow: inset 0 40px 0 0 var(--color-bg-light); 
   }
 
   .nl-promo__content {
@@ -433,18 +474,17 @@ html, body {
   }
 
   .nl-promo {
-    margin: 50px auto;
+    margin: var(--section-margin-y) auto; 
   }
 }
-
-/*DEALS BANNERS END */
+/* DEALS BANNERS END */
 
 
 /* POPULAR LINKS START */
 .container-popular-links {
-  max-width: 1800px;
+  max-width: var(--container-max-width); /* Used var */
   width: 100%;
-  margin: 50px auto;
+  margin: var(--section-margin-y) auto; /* Used var */
   padding: 20px;
 }
 
@@ -488,7 +528,7 @@ html, body {
 }
 
 .link-popular-links:hover {
-  color: #3643ba;
+  color: var(--color-primary); 
 }
 
 .link-popular-links:hover img {
@@ -594,11 +634,11 @@ html, body {
 }
 
 .catdeck__link:hover {
-  color: #3643ba;
+  color: var(--color-primary); 
 }
 
 .catdeck__link:focus-visible {
-  outline: 3px solid #3643ba;
+  outline: 3px solid var(--color-primary); 
   outline-offset: 3px;
   border-radius: 6px;
   padding-inline: .15em;
@@ -698,7 +738,7 @@ html, body {
     --dz2: -200px;
     --s2: .88;
 
-    margin: 50px auto;
+    margin: var(--section-margin-y) auto; 
   }
 
   .catdeck__left {
@@ -743,7 +783,7 @@ html, body {
 }
 
 .catdeck__link.is-active {
-  color: #3643ba;
+  color: var(--color-primary); 
 }
 
 .catdeck__link.is-active i.ri-arrow-right-line {
@@ -763,20 +803,8 @@ html, body {
 .brand-categories {
   --brand-gap: 1rem;
   padding: clamp(16px, 4vw, 56px);
-  max-width: 1800px;
+  max-width: var(--container-max-width); 
   margin: 30px auto;
-}
-
-.sr-only {
-  position: absolute !important;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0 0 0 0);
-  white-space: nowrap;
-  border: 0;
 }
 
 .brand-categories__list {
@@ -797,7 +825,7 @@ html, body {
   place-items: center;
   width: 100%;
   min-height: 70px;
-  background: #fff;
+  background: var(--color-bg-light); 
   border: 1px solid #e7e7e7;
   text-decoration: none;
   transform: translateZ(0);
@@ -813,7 +841,7 @@ html, body {
 }
 
 .brand-categories__link:focus-visible {
-  box-shadow: 0 0 0 3px rgba(54, 67, 186, .35), 0 6px 18px rgba(0, 0, 0, .08);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-primary) 35%, transparent), 0 6px 18px rgba(0, 0, 0, .08); 
 }
 
 .brand-categories__img {
@@ -833,7 +861,7 @@ html, body {
   display: inline-block;
   font-weight: 400;
   text-decoration: none;
-  color: #3643ba;
+  color: var(--color-primary); 
   transition: transform 140ms ease, color 140ms ease;
   font-size: 1rem;
 }
@@ -877,17 +905,17 @@ html, body {
 /* BENEFITS START */
 
 .benefits-section {
-  background-color: #3643ba;
+  background-color: var(--color-primary); 
   width: 100%;
   overflow: hidden;
 }
 
 .section-title-benefits {
-  color: #fff;
+  color: var(--color-text-light); 
   font-size: 2rem;
   margin: 40px auto;
   font-weight: 600;
-  max-width: 1800px;
+  max-width: var(--container-max-width); 
   padding: 20px;
   letter-spacing: -.03em;
 }
@@ -912,7 +940,7 @@ html, body {
   background-size: cover;
   background-position: center;
   text-decoration: none;
-  color: #fff;
+  color: var(--color-text-light); 
   transition: transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
   transform-origin: bottom;
 }
@@ -955,7 +983,7 @@ html, body {
 
 .plus-icon {
   background-color: rgba(0, 0, 0, 0.3);
-  color: white;
+  color: var(--color-text-light); 
   width: 34px;
   height: 34px;
   border-radius: 50%;
@@ -971,7 +999,7 @@ html, body {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 30px;
-    max-width: 1800px;
+    max-width: var(--container-max-width); 
     margin: auto;
     padding: 6px 20px;
   }
@@ -987,17 +1015,17 @@ html, body {
 
 @media (max-width: 1023px) {
   .benefits-container {
-    display: flex;
+    display: flex; /* Kept for mobile/default */
     align-items: flex-end;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    scroll-behavior: smooth;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
+    overflow-x: auto; /* Consolidated */
+    scroll-snap-type: x mandatory; /* Consolidated */
+    scroll-behavior: smooth; /* Added for consistency */
+    -ms-overflow-style: none; /* Consolidated */
+    scrollbar-width: none; /* Consolidated */
     padding-bottom: 20px;
   }
 
-  .benefits-container::-webkit-scrollbar {
+  .benefits-container::-webkit-scrollbar { /* Consolidated */
     display: none;
   }
 
@@ -1022,9 +1050,9 @@ html, body {
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    border: 1px solid #ccc;
-    background-color: #3643ba;
-    color: white;
+    border: 1px solid var(--color-border-light); 
+    background-color: var(--color-primary); 
+    color: var(--color-text-light); 
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -1038,7 +1066,7 @@ html, body {
 
   .nav-arrow i {
     font-size: 30px;
-    color: #ccc;
+    color: var(--color-border-light); 
   }
 }
 
@@ -1076,12 +1104,12 @@ html, body {
 }
 
 .benefits-card:focus-visible {
-  outline: 3px solid #fff;
+  outline: 3px solid var(--color-text-light); 
   outline-offset: 4px;
 }
 
 .nav-arrow:focus-visible {
-  outline: 3px solid #fff;
+  outline: 3px solid var(--color-text-light); 
   outline-offset: 2px;
 }
 
@@ -1096,7 +1124,7 @@ html, body {
 }
 
 .season-sports__container {
-  max-width: 1800px;
+  max-width: var(--container-max-width); /* Used var */
   margin: 0 auto;
 }
 
@@ -1122,7 +1150,7 @@ html, body {
 .season-sports__card {
   display: block;
   text-decoration: none;
-  color: #333;
+  color: var(--color-text-dark); 
   transition: transform 0.3s ease;
 }
 
@@ -1139,6 +1167,10 @@ html, body {
   transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
+.season-sports__card:hover .season-sports__image {
+  transform: scale(1.05);
+}
+
 .season-sports__title {
   font-size: 1rem;
   font-weight: 500;
@@ -1148,9 +1180,6 @@ html, body {
   width: fit-content;
 }
 
-.season-sports__card:hover .season-sports__image {
-  transform: scale(1.05);
-}
 
 .season-sports__title::after {
   content: '';
@@ -1171,25 +1200,22 @@ html, body {
 
 
 @media (max-width: 1024px) {
-  .season-sports {
-    /*padding-left: 0;
-    padding-right: 0;*/
-  }
-
   .season-sports__container {
     max-width: none;
   }
 
   .season-sports__list {
-    display: flex;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
+    display: flex; /* Added/Ensured for scrolling */
+    overflow-x: auto; /* Consolidated */
+    scroll-snap-type: x mandatory; /* Consolidated */
+    scroll-behavior: smooth; /* Added for consistency */
     padding: 0 20px;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
+    -ms-overflow-style: none; /* Consolidated */
+    scrollbar-width: none; /* Consolidated */
+    grid-template-columns: none; /* Override desktop grid */
   }
 
-  .season-sports__list::-webkit-scrollbar {
+  .season-sports__list::-webkit-scrollbar { /* Consolidated */
     display: none;
   }
 
@@ -1216,188 +1242,192 @@ html, body {
 /* Season Sports Section END */
 
 /* PRODUCT SHOWROOM */
- .KE-carousel-header h2 {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin: 0;
-        }
-        .KE-product-link {
-            text-decoration: none;
-            color: black;
-            position: relative;
-            display: block;
-        }
-        .KE-carousel-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 16px;
-        }
-        .KE-carousel-nav button {
-            width: 36px;
-            height: 36px;
-            background-color: transparent;
-            border: 1px solid #ccc;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 1.2rem;
-            line-height: 1;
-            margin-left: 8px;
-            display: inline-flex;
-            justify-content: center;
-            align-items: center;
-            transition: background-color 0.2s, border-color 0.2s;
-        }
-        .KE-carousel-nav button:hover {
-            background-color: #f0f0f0;
-            border-color: #999;
-        }
-        .KE-carousel-nav button svg {
-            width: 16px;
-            height: 16px;
-            stroke: #333;
-            stroke-width: 2.5px;
-            fill: none;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-        }
-        .KE-carousel-container {
-            display: flex;
-            overflow-x: auto;
-            gap: 16px; 
-            scroll-behavior: smooth;
-            scroll-snap-type: x mandatory; 
-            scrollbar-width: none;
-            -ms-overflow-style: none;
-        }
-        .KE-carousel-container::-webkit-scrollbar {
-            display: none;
-        }
-        .KE-product-card {
-            overflow: hidden;
-            background-color: #fff;
-            flex-shrink: 0;
-            scroll-snap-align: start;
-            flex-basis: calc(50% - 8px);
-        }
-        @media (min-width: 768px) {
-            .KE-product-card {
-                flex-basis: calc(33.333% - 10.66px);
-            }
-        }
-        @media (min-width: 1024px) {
-            .KE-product-card {
-                flex-basis: calc(16.666% - 13.33px);
-            }
-        }
-        .KE-product-image {
-            width: 100%;
-            aspect-ratio: 1 / 1;
-            object-fit: cover;
-            background-color: #f9f9f9;
-        }
-        .KE-product-info {
-            padding: 12px;
-        }
-        .KE-product-brand {
-            font-size: 0.8rem;
-            font-weight: 400;
-            color: #555;
-            text-transform: uppercase;
-            margin-bottom: 4px;
-        }
-        .KE-product-name {
-            font-size: 1.0rem;
-            font-weight: 500;
-            color: #111;
-            line-height: 1.3;
-            margin-bottom: 8px;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-        .KE-price-container {
-            display: flex;
-            align-items: baseline;
-            flex-wrap: wrap;
-            margin-top: 5px;
-        }
-       .KE-product-price {
-    padding: 2px 2px;
-    font-size: 0.9rem;
-    font-weight: 500;
-    background-color: #ffcd4e;
-    color: #202020;
-    font-family: 'Decathlon brand', sans-serif !important;
+/* Product Showroom: Added redundant scroll styles to KE-carousel-container for mobile support without HTML change */
+.KE-carousel-container {
+  display: flex;
+  overflow-x: auto; /* Consolidated */
+  gap: 16px;
+  scroll-behavior: smooth; /* Consolidated */
+  scroll-snap-type: x mandatory; /* Consolidated */
+  scrollbar-width: none; /* Consolidated */
+  -ms-overflow-style: none; /* Consolidated */
 }
-        .KE-product-price-discount {
-             padding: 2px 2px;
-    font-size: 0.9rem;
-    font-weight: 500;
-    background-color: #e3262f;
-    color: #ffffff;
-    font-family: 'Decathlon Text', sans-serif !important;
-        }
-        
-        .KE-old-price {
-            padding: 5px 0px;
-            color: #616161;
-            text-decoration: line-through !important;
-            font-size: 0.7rem;
-            margin-left: 5px;
-        }
-        .KE-discount-badge {
-            color: #e3262f;
-            font-weight: 500;
-            font-size: 0.8rem;
-            padding: 5px;
-            margin-left: 5px;
-        }
-        .KE-error-message {
-            color: red;
-            font-weight: bold;
-            padding: 10px;
-            border: 1px solid red;
-            background-color: #fff0f0;
-            border-radius: 8px;
-        }
-        .KE-product-sticker {
-            position: absolute;
-            top: 0px;
-            left: 0px;
-            padding: 4px 8px;
-            font-size: 0.6rem; /* 12px */
-            font-weight: 500;
-            border-radius: 0px;
-            z-index: 10;
-            font-family: 'Decathlon Brand', sans-serif !important;
-        }
-        .KE-sticker-grey {
-            background-color: #e0e0e0;
-            color: #111;
-        }
-        .KE-sticker-black {
-            background-color: #111;
-            color: #fff;
-        }
-        .KE-sticker-red {
-            background-color: #e3262f;
-            color: #fff;
-        }
-        .KE-sticker-yellow {
-            background-color: #ffcd4e;
-            color: #111;
-        }
-        .KE-sticker-blue {
-            background-color: #3643ba;
-            color: #fff;
-        }
-        /* --- FIX HORIZONTAL OVERFLOW --- */
+.KE-carousel-container::-webkit-scrollbar { /* Consolidated */
+  display: none;
+}
+
+.KE-carousel-header h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0;
+}
+.KE-product-link {
+  text-decoration: none;
+  color: black;
+  position: relative;
+  display: block;
+}
+.KE-carousel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+.KE-carousel-nav button {
+  width: 36px;
+  height: 36px;
+  background-color: transparent;
+  border: 1px solid var(--color-border-light); 
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.2rem;
+  line-height: 1;
+  margin-left: 8px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+.KE-carousel-nav button:hover {
+  background-color: #f0f0f0;
+  border-color: #999;
+}
+.KE-carousel-nav button svg {
+  width: 16px;
+  height: 16px;
+  stroke: var(--color-text-dark); 
+  stroke-width: 2.5px;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.KE-product-card {
+  overflow: hidden;
+  background-color: var(--color-bg-light); 
+  flex-shrink: 0;
+  scroll-snap-align: start;
+  flex-basis: calc(50% - 8px);
+}
+@media (min-width: 768px) {
+  .KE-product-card {
+    flex-basis: calc(33.333% - 10.66px);
+  }
+}
+@media (min-width: 1024px) {
+  .KE-product-card {
+    flex-basis: calc(16.666% - 13.33px);
+  }
+}
+.KE-product-image {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  background-color: #f9f9f9;
+}
+.KE-product-info {
+  padding: 12px;
+}
+.KE-product-brand {
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: #555;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+.KE-product-name {
+  font-size: 1.0rem;
+  font-weight: 500;
+  color: #111;
+  line-height: 1.3;
+  margin-bottom: 8px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.KE-price-container {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  margin-top: 5px;
+}
+.KE-product-price {
+  padding: 2px 2px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  background-color: var(--color-promo); 
+  color: #202020;
+  font-family: 'Decathlon Brand', sans-serif;
+}
+.KE-product-price-discount {
+  padding: 2px 2px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  background-color: var(--color-sales); 
+  color: var(--color-text-light); 
+  font-family: 'Decathlon Text', sans-serif;
+}
+
+.KE-old-price {
+  padding: 5px 0px;
+  color: #616161;
+  text-decoration: line-through !important;
+  font-size: 0.7rem;
+  margin-left: 5px;
+}
+.KE-discount-badge {
+  color: var(--color-sales); 
+  font-weight: 500;
+  font-size: 0.8rem;
+  padding: 5px;
+  margin-left: 5px;
+}
+.KE-error-message {
+  color: red;
+  font-weight: bold;
+  padding: 10px;
+  border: 1px solid red;
+  background-color: #fff0f0;
+  border-radius: 8px;
+}
+.KE-product-sticker {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  padding: 4px 8px;
+  font-size: 0.6rem; /* 12px */
+  font-weight: 500;
+  border-radius: 0px;
+  z-index: 10;
+  font-family: 'Decathlon Brand', sans-serif;
+}
+.KE-sticker-grey {
+  background-color: #e0e0e0;
+  color: #111;
+}
+.KE-sticker-black {
+  background-color: #111;
+  color: var(--color-text-light); 
+}
+.KE-sticker-red {
+  background-color: var(--color-sales); 
+  color: var(--color-text-light); 
+}
+.KE-sticker-yellow {
+  background-color: var(--color-promo); 
+  color: #111;
+}
+.KE-sticker-blue {
+  background-color: var(--color-primary); 
+  color: var(--color-text-light); 
+}
+/* --- FIX HORIZONTAL OVERFLOW --- */
 .catdeck, .catdeck__right {
   overflow-x: clip;
 }
 
 @media (min-width: 1025px) {
+  /* Set these containers to hidden only on desktop where they are not sliders */
   .image-list-vf,
   .benefits-container,
   .season-sports__list,
@@ -1406,24 +1436,24 @@ html, body {
   }
 }
 
-/* --- Responsive Safety --- */
-img, video, iframe {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
+/* PROMISE SECTION */
 
 .PromiseKE-container {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background-color: #3643ba;
-  color: white;
-  padding: 1rem;
+  /* Original CSS was #3643ba, changing to red to match your inline style */
+  background-color: var(--color-sales); 
+  color: var(--color-text-light); 
+  padding: 1rem; /* Adjusting padding to match inline style approximation */
   flex-wrap: wrap;
   gap: 1rem;
   margin-bottom: 20px;
-  font-family: 'Decathlon Brand', sans-serif !important;
+  font-family: 'Decathlon Brand', sans-serif;
+  /* Adding properties to override the removed inline styles */
+  padding: 12px;
+  border-radius: 6px;
+  font-weight: bold;
 }
 
 .PromiseKE-box {
@@ -1448,7 +1478,7 @@ img, video, iframe {
 .PromiseKE-divider {
   width: 1px;
   height: 1.5rem;
-  background-color: white;
+  background-color: var(--color-text-light); 
   display: none;
 }
 
@@ -1477,7 +1507,3 @@ img, video, iframe {
     font-size: 1rem;
   }
 }
-
-
-
-
