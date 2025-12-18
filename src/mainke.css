@@ -2124,7 +2124,8 @@ iframe {
   overflow: hidden;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
   transition: transform 0.3s ease;
-  flex: 0 0 calc(50% - 8px); /* two cards per view */
+  /*  flex: 0 0 calc(50% - 8px); two cards per view */
+  flex: 0 0 100%; /* one card per view */
   scroll-snap-align: start;
 }
 
@@ -2181,6 +2182,7 @@ iframe {
     display: block;
   }
 }
+
 
 
 
