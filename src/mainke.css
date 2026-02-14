@@ -941,7 +941,7 @@
         padding: 0;
         margin: 0;
         display: grid;
-        grid-template-columns: repeat(5, 1fr);
+        grid-template-columns: repeat(4, 1fr);
         gap: 25px;
     }
     .season-sports__card {
@@ -1380,3 +1380,4 @@
             display: block;
         }
     }
+
